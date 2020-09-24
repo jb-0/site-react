@@ -1,9 +1,13 @@
 import React from 'react';
+import Card from './Card';
+import portfolioContent from '../content/portfolioContent';
 
 function App() {
   return (
     <div>
-    Hi
+    {portfolioContent.map((portfolioItem) => {
+      return <Card item={portfolioItem}/>
+    })}
     </div>
   );
 }
