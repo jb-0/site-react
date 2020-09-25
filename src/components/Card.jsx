@@ -3,7 +3,7 @@ import React from "react";
 function Card(props) {
   return (
     <div class="card-item">
-      <h2>{props.item.title}</h2>
+      <h3>{props.item.title}</h3>
       <p>{props.item.content}</p>
 
       {Object.keys(props.item.links).map((key, index) => {

@@ -25,7 +25,6 @@ const portfolioContent = [
         Bucket, I developed a Cloud Function in Python. The Google Cloud Function is triggered via 
         pushes to the GitHub repo (using a webhook).`,
     links: {
-      Site: "https://bookcharts.herokuapp.com/",
       Source: "https://github.com/jb-0/gcs-continuous-deployment",
     },
   },
