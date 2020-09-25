@@ -2,7 +2,7 @@ import React from "react";
 
 function Intro() {
   return (
-    <div>
+    <div class="intro">
       <h1>Jamie Barrett</h1>
       <p>
         Hello, I am a full stack developer with the advantage of having a

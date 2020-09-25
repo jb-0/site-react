@@ -7,7 +7,7 @@ import portfolioContent from "../content/portfolioContent";
 
 function App() {
   return (
-    <div class="app-div">
+    <div class="app">
       <Header />
       <Intro />
       <div class="cards-section">
