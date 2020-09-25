@@ -1,3 +1,5 @@
+/* https://coolors.co/fbfef9-191923-0e79b2-bf1363-f39237 */
+
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
@@ -6,6 +8,7 @@ body {
 .intro h1 {
     font-family: 'Permanent Marker', cursive;
     font-size: 3rem;
+    color: #F39237;
 }
 
 .intro {
@@ -18,3 +21,17 @@ body {
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
   }
+
+.cards-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 1rem;
+}
+
+.card-item {
+    text-align: center;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 25px;
+    background-color: #0E79B2;
+}
