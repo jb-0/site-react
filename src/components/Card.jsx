@@ -2,12 +2,15 @@ import React from 'react';
 
 function Card(props) {
   return (
-    <div>
+    <div class="card-item">
       <h2>{props.item.title}</h2>
       <p>{props.item.content}</p>
       
       {Object.keys(props.item.links).map((key, index) => {
-        return (<span><a href={props.item.links[key]}>{key}</a>{'  '}</span>)
+        const link = props.item.links[key];
+        let linkName = key;
+        
+        return (<span class="card-link"><a href={link}>{linkName}</a>{' '}</span>)
       })}
       
     </div>
