@@ -1,3 +1,20 @@
 body {
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
 }
+
+.intro h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3rem;
+}
+
+.intro {
+    text-align: center;
+    background-color: #191923;
+    color: #FBFEF9;
+    padding: 80px 12.5%;
+    /* Grid styles */
+    /* display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
+  }
