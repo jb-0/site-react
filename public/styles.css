@@ -3,6 +3,9 @@
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
+    background-color: #191923;
+    color: white;
+    text-align: center;
 }
 
 .intro h1 {
@@ -12,28 +15,47 @@ body {
 }
 
 .intro {
-    text-align: center;
-    background-color: #191923;
     color: #FBFEF9;
     padding: 80px 12.5%;
-    /* Grid styles */
-    /* display: grid;
-    align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
   }
 
 .cards-section {
-    padding-top: 30px;
+    padding: 30px 0;
+    background-color: white;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 1rem;
+    
 }
 
 .card-item {
-    text-align: center;
-    margin: 10px;
-    padding: 15px;
-    border-radius: 25px;
-    background-color: #191923;
     color: white;
+    margin: 10px;
+    padding: 25px;
+    border-radius: 55px;
+    background-color: #191923;
+    position: relative;
+}
+
+.card-links {
+    position: absolute; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.card-link-icon {
+    fill: white;
+    color: white;
+    width: 40px;
+}
+
+.card-link-icon:hover {
+    fill: #BF1363;
+}
+
+.contact-form {
+    padding: 80px 12.5%;
+    display: block;
+    width: 75%;
 }

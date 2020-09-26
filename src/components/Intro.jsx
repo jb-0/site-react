@@ -2,14 +2,14 @@ import React from "react";
 
 function Intro() {
   return (
-    <div class="intro">
+    <div className="intro">
       <h1>Jamie Barrett</h1>
       <p>
-        Hello, I am a full stack developer with the advantage of having a
-        background in Cyber Security. I enjoy developing all websites ranging
-        from business landing pages, through to data rich functional web
-        applications. I have development experience using HTML, CSS, JavaScript,
-        React, Node.js, Express, SQL, Python, Google Cloud Platform and Heroku
+        Hello, I am a full stack developer with a strong background in Cyber
+        Security. I enjoy developing all websites ranging from business landing
+        pages, through to data rich functional web applications. I have
+        development experience using HTML, CSS, JavaScript, MongoDB, Express,
+        React, Node.js, SQL, Python, Google Cloud Platform and Heroku.
       </p>
     </div>
   );
