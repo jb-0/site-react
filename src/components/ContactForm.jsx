@@ -2,29 +2,32 @@ import React from "react";
 
 function ContactForm() {
   return (
-    <form class="contact-form" action="action_page.php">
-      <label for="fname">First Name</label>
+    <form class="contact-form" action="">
+      <label for="name">Name{" "}</label><br />
       <input
         type="text"
-        id="fname"
-        name="firstname"
+        id="name"
+        name="name"
         placeholder="Your name.."
-      ></input><br></br>
+        className="text-input"
+      ></input><br /><br />
 
-      <label for="lname">Last Name</label>
+      <label for="email">Email{" "}</label><br />
       <input
-        type="text"
-        id="lname"
-        name="lastname"
-        placeholder="Your last name.."
-      ></input><br></br>
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Your email.."
+        className="text-input"
+      ></input><br /><br />
       
-      <label for="subject"><span>Subject</span></label>
+      <label for="message"><span>Message{" "}</span></label><br />
       <textarea
-        id="subject"
-        name="subject"
+        id="message"
+        name="message"
         placeholder="Write something.."
-      ></textarea>
+        className="text-input"
+      ></textarea><br /><br />
 
       <input type="submit" value="Submit"></input>
     </form>
