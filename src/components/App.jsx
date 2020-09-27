@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./Header";
+import Navbar from "./Navbar"
 import Intro from "./Intro"
 import Card from "./Card";
 import ContactForm from "./ContactForm";
@@ -9,7 +9,7 @@ import portfolioContent from "../content/portfolioContent";
 function App() {
   return (
     <div className="app">
-      <Header />
+      <Navbar />
       <Intro />
       <div className="cards-section">
         {portfolioContent.map((portfolioItem) => {
