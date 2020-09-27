@@ -70,7 +70,7 @@ function ContactForm() {
         <br />
         <br />
 
-        <input type="submit" value="Submit"></input>
+        <input type="submit" value="Submit" className="submit-button"></input>
       </form>
     </div>
   );
