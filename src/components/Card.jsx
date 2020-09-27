@@ -10,11 +10,11 @@ function Card(props) {
   // TODO: Move to component????
   function getIcon(linkName) {
     if (linkName === "site") {
-      return <LanguageIcon className="card-link-icon" />;
+      return <LanguageIcon className="card-link-icon" htmlColor="white" fontSize="large" />;
     } else if (linkName === "demo") {
-      return <YouTubeIcon className="card-link-icon" />;
+      return <YouTubeIcon className="card-link-icon" htmlColor="white" fontSize="large" />;
     } else if (linkName === "source") {
-      return <GitHubIcon className="card-link-icon" />;
+      return <GitHubIcon className="card-link-icon" htmlColor="white" fontSize="large" />;
     } else {
       return "Link";
     }

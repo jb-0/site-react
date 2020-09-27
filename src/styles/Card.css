@@ -1,6 +1,6 @@
 .card-item {
     margin: 10px;
-    padding: 25px;
+    padding: 20px 20px 40px 20px;
     border-radius: 55px;
     background-color: #191923;
     color: white;
@@ -12,12 +12,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-}
-
-.card-link-icon {
-    fill: white;
-    color: white;
-    width: 40px;
 }
 
 .card-link-icon:hover {
