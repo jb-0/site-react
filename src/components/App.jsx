@@ -12,8 +12,8 @@ function App() {
       <Navbar />
       <Intro />
       <div className="cards-section" id="portfolio">
-        {portfolioContent.map((portfolioItem) => {
-          return <Card item={portfolioItem} />;
+        {portfolioContent.map((portfolioItem, key) => {
+          return <Card key={key} item={portfolioItem} />;
         })}
       </div>
       <ContactForm />
