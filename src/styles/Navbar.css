@@ -1,6 +1,7 @@
 .navbar {
   background-color: #F39237;
   overflow: hidden;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .navbar a {
