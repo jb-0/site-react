@@ -1,0 +1,15 @@
+.contact-form {
+    padding: 80px 12.5%;
+    display: block;
+    width: 75%;
+}
+
+.text-input {
+    box-shadow: none;
+    background-color:  #191923;
+    font-family: 'Open Sans', sans-serif;
+    border-style: solid;
+    border-color:  #F39237;
+    color: white;
+    width: 300px;
+}

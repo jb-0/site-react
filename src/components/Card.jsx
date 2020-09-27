@@ -2,6 +2,7 @@ import React from "react";
 import LanguageIcon from "@material-ui/icons/Language";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import YouTubeIcon from "@material-ui/icons/YouTube";
+import "../styles/Card.css"
 
 function Card(props) {
   // For a given portfolio item a combination of links can be included, this
