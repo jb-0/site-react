@@ -1,0 +1,12 @@
+.portfolio {
+    background-color: white;
+    color: #191923;
+    padding: 30px;
+}
+
+.portfolio-cards-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1rem;
+    
+}

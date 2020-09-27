@@ -1,21 +1,16 @@
 import React from "react";
 import Navbar from "./Navbar"
 import Intro from "./Intro"
-import Card from "./Card";
+import Portfolio from "./Portfolio"
 import ContactForm from "./ContactForm";
 import Footer from "./Footer";
-import portfolioContent from "../content/portfolioContent";
 
 function App() {
   return (
     <div className="app">
       <Navbar />
       <Intro />
-      <div className="cards-section" id="portfolio">
-        {portfolioContent.map((portfolioItem, key) => {
-          return <Card key={key} item={portfolioItem} />;
-        })}
-      </div>
+      <Portfolio />
       <ContactForm />
       <Footer />
     </div>
