@@ -3,7 +3,7 @@ import "../styles/Intro.css";
 
 function Intro() {
   return (
-    <div className="intro">
+    <div className="intro" id="about">
       <h1>Jamie Barrett</h1>
       <p>
         Hello, I am a full stack developer with a strong background in Cyber

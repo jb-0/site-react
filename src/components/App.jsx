@@ -11,7 +11,7 @@ function App() {
     <div className="app">
       <Navbar />
       <Intro />
-      <div className="cards-section">
+      <div className="cards-section" id="portfolio">
         {portfolioContent.map((portfolioItem) => {
           return <Card item={portfolioItem} />;
         })}
