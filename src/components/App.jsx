@@ -1,5 +1,10 @@
 import React from "react";
 import Home from "./home/Home";
+import Blog from "./blog/Blog"
+import BlogPostEdit from "./blog/BlogPostEdit"
+import BlogPostCreate from "./blog/BlogPostCreate"
+
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function App() {
@@ -7,9 +12,9 @@ function App() {
     <div className="app">
       <Router>
       <Route path="/" exact component={Home} />
-      {/* <Route path="/blog" exact component={Blog} />
+      <Route path="/blog" exact component={Blog} />
       <Route path="/blog/edit/:id" component={BlogPostEdit} />
-      <Route path="/blog/create" component={CreateBlogPost} /> */}
+      <Route path="/blog/create" component={BlogPostCreate} />
       </Router>
     </div>
   );
