@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./Home";
+import Home from "./home/Home";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function App() {
@@ -10,7 +10,6 @@ function App() {
       {/* <Route path="/blog" exact component={Blog} />
       <Route path="/blog/edit/:id" component={BlogPostEdit} />
       <Route path="/blog/create" component={CreateBlogPost} /> */}
-        <Home />
       </Router>
     </div>
   );
