@@ -1,9 +1,9 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const mongoose = require("mongoose");
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mongoose = require('mongoose');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -11,7 +11,7 @@ const blogRoutes = express.Router();
 const { connection, Schema } = mongoose;
 
 // Connect to DB
-mongoose.connect(process.env.TEST_DB_PATH, {
+mongoose.connect(process.env.DEV_DB_PATH, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -27,7 +27,7 @@ const BlogSchema = new Schema({
   created_date: { type: Date },
 });
 
-const Blog = mongoose.model("Blog", BlogSchema);
+const Blog = mongoose.model('Blog', BlogSchema);
 
 // App config
 app.use(cors());
@@ -66,7 +66,7 @@ blogRoutes.route('/create').post((req, res) => {
     author: req.body.author,
     created_date: req.body.created_date,
   });
-  
+
   blog.save((err) => {
     if (!err) {
       res.status(200).json({ blog: 'blog created', content: blog });
