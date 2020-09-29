@@ -13,6 +13,7 @@ function App() {
       <Router>
       <Route path="/" exact component={Home} />
       <Route path="/blog" exact component={Blog} />
+      {/* BLOG POST VIEW ROUTE? */}
       <Route path="/blog/edit/:id" component={BlogPostEdit} />
       <Route path="/blog/create" component={BlogPostCreate} />
       </Router>
