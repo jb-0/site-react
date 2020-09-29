@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/ContactForm.css";
+import "../../styles/Forms.css";
 
 function ContactForm() {
   const [formText, setFormText] = useState({
@@ -19,9 +19,6 @@ function ContactForm() {
     setFormText((previousValues) => {
       return {...previousValues, [target]: value}
     });
-
-    console.log(formText);
-    console.log(value);
   }
 
   return (
