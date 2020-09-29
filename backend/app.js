@@ -32,6 +32,7 @@ const Blog = mongoose.model("Blog", BlogSchema);
 // App config
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use('/blog', blogRoutes);
 
 // Route to return all blog posts
@@ -65,6 +66,9 @@ blogRoutes.route('/create').post((req, res) => {
     author: req.body.author,
     created_date: req.body.created_date,
   });
+
+  console.log(req.body);
+  console.log(req.body.title);
 
   blog.save((err) => {
     if (!err) {

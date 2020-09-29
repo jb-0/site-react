@@ -11,8 +11,22 @@ function BlogPostCreate() {
     created_date: new Date(),
   });
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+
+    const url = 'http://localhost:4000/blog/create';
+
+    const rawResponse = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(blogPost)
+  });
+  const content = await rawResponse.json();
+
+  console.log(content);
   }
 
   function handleUpdates(event) {
