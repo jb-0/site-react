@@ -66,10 +66,7 @@ blogRoutes.route('/create').post((req, res) => {
     author: req.body.author,
     created_date: req.body.created_date,
   });
-
-  console.log(req.body);
-  console.log(req.body.title);
-
+  
   blog.save((err) => {
     if (!err) {
       res.status(200).json({ blog: 'blog created', content: blog });

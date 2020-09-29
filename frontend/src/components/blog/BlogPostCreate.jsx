@@ -24,9 +24,8 @@ function BlogPostCreate() {
     },
     body: JSON.stringify(blogPost)
   });
+  //TODO handling response
   const content = await rawResponse.json();
-
-  console.log(content);
   }
 
   function handleUpdates(event) {
