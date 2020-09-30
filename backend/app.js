@@ -8,7 +8,9 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 4000;
 const blogRoutes = express.Router();
-const { connection, Schema } = mongoose;
+const { connection } = mongoose;
+const { User } = require(`${__dirname}/models/userModel.js`);
+const { Blog } = require(`${__dirname}/models/blogModel.js`);
 
 /* ***************************************
 DB CONNECTION
@@ -24,7 +26,6 @@ connection.once('open', () => {
 
 /* ***************************************
 DB SCHEMA AND MODELS
-*************************************** */
 const BlogSchema = new Schema({
   title: { type: String },
   author: { type: String },
@@ -33,7 +34,7 @@ const BlogSchema = new Schema({
 });
 
 const Blog = mongoose.model('Blog', BlogSchema);
-
+*************************************** */
 /* ***************************************
 APP CONFIG
 *************************************** */
