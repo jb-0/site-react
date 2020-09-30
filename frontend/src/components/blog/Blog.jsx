@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
-import "../../styles/Blog.css"
+import "../../styles/Blog.css";
 
 function Blog() {
-  const [blogPosts, setBlogPosts] = useState([])
+  const [blogPosts, setBlogPosts] = useState([]);
   const url = "http://localhost:4000/blog";
 
   async function fetchData() {
@@ -18,10 +18,10 @@ function Blog() {
 
     //TODO err handling response
     setBlogPosts(await rawResponse.json());
-  }  
+  }
 
   useEffect(() => {
-      fetchData();
+    fetchData();
   }, []);
 
   return (
@@ -32,7 +32,10 @@ function Blog() {
         return (
           <div className="blog-post">
             <h2>{blogPost.title}</h2>
-            <p>{blogPost.post}</p>
+            <p>{blogPost.post.slice(0, 100)}....</p>
+            <form action={"/blog/" + blogPost._id}>
+              <button className="submit-button">Read</button>
+            </form>
           </div>
         );
       })}
