@@ -58,4 +58,4 @@ blogRoutes.route('/edit/:id').patch((req, res) => {
   );
 });
 
-module.exports = { blogRoutes };
+module.exports = blogRoutes;

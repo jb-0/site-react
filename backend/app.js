@@ -10,7 +10,6 @@ const PORT = process.env.PORT || 4000;
 const { connection } = mongoose;
 const { User } = require(`${__dirname}/models/userModel.js`);
 const { Blog } = require(`${__dirname}/models/blogModel.js`);
-const { blogRoutes } = require(`${__dirname}/routes/blogRoutes.js`);
 
 /* ***************************************
 DB CONNECTION
@@ -30,7 +29,8 @@ APP CONFIG
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('/blog', blogRoutes);
+app.use('/blog', require(`${__dirname}/routes/blogRoutes.js`));
+app.use('/users', require(`${__dirname}/routes/userRoutes.js`));
 
 app.listen(PORT, () => {
   console.log(`Server is running on Port: ${PORT}`);
