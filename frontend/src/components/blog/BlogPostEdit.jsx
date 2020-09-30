@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
 import BlogPostForm from "./BlogPostForm";
@@ -9,6 +9,25 @@ function BlogPostEdit(props) {
     title: "",
     post: "",
   });
+
+  async function fetchData() {
+    const url = `http://localhost:4000/blog/${props.match.params.id}`;
+    const rawResponse = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    //TODO err handling response
+    setBlogPost(await rawResponse.json());
+    console.log(blogPost);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
