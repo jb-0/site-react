@@ -25,17 +25,6 @@ connection.once('open', () => {
 });
 
 /* ***************************************
-DB SCHEMA AND MODELS
-const BlogSchema = new Schema({
-  title: { type: String },
-  author: { type: String },
-  post: { type: String },
-  created_date: { type: Date },
-});
-
-const Blog = mongoose.model('Blog', BlogSchema);
-*************************************** */
-/* ***************************************
 APP CONFIG
 *************************************** */
 app.use(cors());
