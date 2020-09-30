@@ -3,7 +3,6 @@ import React from "react";
 function BlogPostForm(props) {
   return (
     <div>
-      <h1>New blog post</h1>
       <form onSubmit={props.handleSubmit}>
         <label htmlFor="title">Title</label>
         <br />

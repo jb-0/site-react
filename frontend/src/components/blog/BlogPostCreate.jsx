@@ -41,6 +41,7 @@ function BlogPostCreate() {
   return (
     <div className="blog-post-create">
       <Navbar />
+      <h1>New blog post</h1>
       <BlogPostForm handleUpdates={handleUpdates} handleSubmit={handleSubmit} blogPost={blogPost}/>
       <Footer />
     </div>

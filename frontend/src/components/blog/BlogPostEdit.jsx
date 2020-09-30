@@ -40,6 +40,7 @@ function BlogPostEdit(props) {
   return (
     <div className="blog-post-edit">
       <Navbar />
+      <h1>Edit blog post</h1>
       <BlogPostForm handleUpdates={handleUpdates} handleSubmit={handleSubmit} blogPost={blogPost}/>
       <Footer />
     </div>
