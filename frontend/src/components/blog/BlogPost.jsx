@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
-import "../../styles/Blog.css"
 
-function Blog() {
-  const [blogPosts, setBlogPosts] = useState([])
-  const url = "http://localhost:4000/blog";
+function BlogPost(props) {
+  const [blogPost, setBlogPost] = useState([]);
+  const url = `http://localhost:4000/blog/${props.match.params.id}`;
 
   async function fetchData() {
     const rawResponse = await fetch(url, {
@@ -17,28 +16,26 @@ function Blog() {
     });
 
     //TODO err handling response
-    setBlogPosts(await rawResponse.json());
-  }  
+    setBlogPost(await rawResponse.json());
+    console.log(blogPost);
+  }
 
   useEffect(() => {
-      fetchData();
+    fetchData();
   }, []);
 
   return (
     <div className="blog">
       <Navbar />
-      <h1>Blog Posts</h1>
-      {blogPosts.map((blogPost) => {
-        return (
-          <div className="blog-post">
-            <h2>{blogPost.title}</h2>
-            <p>{blogPost.post}</p>
-          </div>
-        );
-      })}
+      <h1>{blogPost.title}</h1>
+      <p>
+        Written by {blogPost.author} on {blogPost.created_date}
+      </p>
+      <br />
+      <p>{blogPost.post}</p>
       <Footer />
     </div>
   );
 }
 
-export default Blog;
+export default BlogPost;
