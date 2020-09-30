@@ -15,8 +15,8 @@ function App() {
       <Route path="/" exact component={Home} />
       <Route path="/blog" exact component={Blog} />
       <Route path="/blog/:id" component={BlogPost} />
-      <Route path="/blog/edit/:id" component={BlogPostEdit} />
-      <Route path="/blog/create" component={BlogPostCreate} />
+      <Route path="/blog-edit/:id" component={BlogPostEdit} />
+      <Route path="/blog-create" component={BlogPostCreate} />
       </Router>
     </div>
   );
