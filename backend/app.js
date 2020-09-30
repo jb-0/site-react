@@ -10,7 +10,9 @@ const PORT = process.env.PORT || 4000;
 const blogRoutes = express.Router();
 const { connection, Schema } = mongoose;
 
-// Connect to DB
+/* ***************************************
+DB CONNECTION
+*************************************** */
 mongoose.connect(process.env.DEV_DB_PATH, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -20,6 +22,9 @@ connection.once('open', () => {
   console.log('MongoDB connection established');
 });
 
+/* ***************************************
+DB SCHEMA AND MODELS
+*************************************** */
 const BlogSchema = new Schema({
   title: { type: String },
   author: { type: String },
@@ -29,12 +34,17 @@ const BlogSchema = new Schema({
 
 const Blog = mongoose.model('Blog', BlogSchema);
 
-// App config
+/* ***************************************
+APP CONFIG
+*************************************** */
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/blog', blogRoutes);
 
+/* ***************************************
+ROUTES
+*************************************** */
 // Route to return all blog posts
 blogRoutes.route('/').get((req, res) => {
   Blog.find((err, blogPosts) => {
