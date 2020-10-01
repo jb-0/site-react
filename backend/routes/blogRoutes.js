@@ -1,5 +1,6 @@
 const { Blog } = require(`${__dirname}/../models/blogModel.js`);
 const blogRoutes = require('express').Router();
+const auth = require(`${__dirname}/../middleware/auth.js`);
 
 // Route to return all blog posts
 blogRoutes.route('/').get((req, res) => {
