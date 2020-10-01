@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
 import BlogPostForm from "./BlogPostForm";
-import "../../styles/Forms.css";
+import '../../styles/Forms.css';
 
 function BlogPostEdit(props) {
   const [blogPost, setBlogPost] = useState({

@@ -1,8 +1,9 @@
 const { User } = require(`${__dirname}/../models/userModel.js`);
-const userRoutes = require("express").Router();
-const bcrypt = require("bcrypt");
+const userRoutes = require('express').Router();
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-userRoutes.post("/register", async (req, res) => {
+userRoutes.post('/register', async (req, res) => {
   try {
     // A given user should supply an email, password (twice) and a display name
     // display name will be displayed on blog posts
@@ -10,15 +11,15 @@ userRoutes.post("/register", async (req, res) => {
 
     // Some basic validation is performed
     if (!email || !password || !passwordCheck || !displayName) {
-      return res.status(400).json({ msg: "All fields must be complete" });
+      return res.status(400).json({ msg: 'All fields must be complete' });
     }
     if (password.length < 8) {
       return res
         .status(400)
-        .json({ msg: "Password must be at least 8 characters" });
+        .json({ msg: 'Password must be at least 8 characters' });
     }
     if (password !== passwordCheck) {
-      return res.status(400).json({ msg: "Passwords must match" });
+      return res.status(400).json({ msg: 'Passwords must match' });
     }
 
     // Check to see if the user exists in the DB
@@ -26,7 +27,7 @@ userRoutes.post("/register", async (req, res) => {
     if (existingUser) {
       return res
         .status(400)
-        .json({ msg: "Existing account with this email found" });
+        .json({ msg: 'Existing account with this email found' });
     }
 
     // Hash password
@@ -44,9 +45,9 @@ userRoutes.post("/register", async (req, res) => {
     // Save the new user
     newUser.save((err) => {
       if (!err) {
-        res.status(200).json({ msg: "User created, requires activation" });
+        res.status(200).json({ msg: 'User created, requires activation' });
       } else {
-        res.status(400).send("User creation failed");
+        res.status(400).send('User creation failed');
       }
     });
   } catch (err) {
@@ -54,26 +55,36 @@ userRoutes.post("/register", async (req, res) => {
   }
 });
 
-userRoutes.post("/login", async (req, res) => {
+userRoutes.post('/login', async (req, res) => {
   try {
     // A given user should supply an email and password
     const { email, password } = req.body;
 
     // Some basic validation is performed
     if (!email || !password) {
-      return res.status(400).json({ msg: "All fields must be complete" });
+      return res.status(400).json({ msg: 'All fields must be complete' });
     }
 
     // Check to see if the user exists in the DB
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ msg: "No account with this email found" });
+      return res.status(400).json({ msg: 'No account with this email found' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ msg: "Invalid credentials" });
+      return res.status(400).json({ msg: 'Invalid credentials' });
     }
+
+    const token = jwt.sign({ id: user.id }, process.env.JWT_TOKEN);
+    res.json({
+      token,
+      user: {
+        id: user.id,
+        displayName: user.displayName,
+        email: user.email,
+      },
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
