@@ -3,7 +3,7 @@ const blogRoutes = require('express').Router();
 const auth = require(`${__dirname}/../middleware/auth.js`);
 
 // Route to return all blog posts
-blogRoutes.route('/').get((req, res) => {
+blogRoutes.get('/', (req, res) => {
   Blog.find((err, blogPosts) => {
     if (err) {
       console.log(err);
@@ -14,7 +14,7 @@ blogRoutes.route('/').get((req, res) => {
 });
 
 // Route to return a specific blog post
-blogRoutes.route('/:id').get((req, res) => {
+blogRoutes.get('/:id', (req, res) => {
   const { id } = req.params;
   Blog.findById(id, (err, blogPost) => {
     if (err) {
@@ -26,7 +26,7 @@ blogRoutes.route('/:id').get((req, res) => {
 });
 
 // Route to create a new blog post
-blogRoutes.route('/create').post((req, res) => {
+blogRoutes.post('/create', (req, res) => {
   const blog = new Blog({
     title: req.body.title,
     post: req.body.post,
@@ -44,7 +44,7 @@ blogRoutes.route('/create').post((req, res) => {
 });
 
 // Route to patch (edit) a blog post
-blogRoutes.route('/edit/:id').patch((req, res) => {
+blogRoutes.patch('/edit/:id', (req, res) => {
   Blog.updateOne(
     { _id: req.params.id },
     { $set: req.body },
