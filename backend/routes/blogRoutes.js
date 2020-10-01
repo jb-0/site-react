@@ -26,7 +26,7 @@ blogRoutes.get('/:id', (req, res) => {
 });
 
 // Route to create a new blog post
-blogRoutes.post('/create', (req, res) => {
+blogRoutes.post('/create', auth, (req, res) => {
   const blog = new Blog({
     title: req.body.title,
     post: req.body.post,
@@ -44,7 +44,7 @@ blogRoutes.post('/create', (req, res) => {
 });
 
 // Route to patch (edit) a blog post
-blogRoutes.patch('/edit/:id', (req, res) => {
+blogRoutes.patch('/edit/:id', auth, (req, res) => {
   Blog.updateOne(
     { _id: req.params.id },
     { $set: req.body },
