@@ -29,8 +29,8 @@ APP CONFIG
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('/blog', require(`${__dirname}/routes/blogRoutes.js`));
-app.use('/users', require(`${__dirname}/routes/userRoutes.js`));
+app.use('/api/blog', require(`${__dirname}/routes/blogRoutes.js`));
+app.use('/api/users', require(`${__dirname}/routes/userRoutes.js`));
 
 /* ***************************************
 FRONTEND LINKAGE
