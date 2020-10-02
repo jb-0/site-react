@@ -37,7 +37,7 @@ FRONTEND LINKAGE
 *************************************** */
 app.use(express.static(`${__dirname}/../frontend/build`));
 app.get('*', (req, res) => {
-  res.sendFile(`${__dirname}/../frontend/build`);
+  res.sendFile(`${__dirname}/../frontend/build/index.html`);
 });
 
 console.log(`${__dirname}/../frontend/build`);
