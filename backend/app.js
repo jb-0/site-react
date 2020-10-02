@@ -32,6 +32,16 @@ app.use(bodyParser.json());
 app.use('/blog', require(`${__dirname}/routes/blogRoutes.js`));
 app.use('/users', require(`${__dirname}/routes/userRoutes.js`));
 
+/* ***************************************
+FRONTEND LINKAGE
+*************************************** */
+app.use(express.static(`${__dirname}/../frontend/build`));
+app.get('*', (req, res) => {
+  res.sendFile(`${__dirname}/../frontend/build`);
+});
+
+console.log(`${__dirname}/../frontend/build`);
+
 app.listen(PORT, () => {
   console.log(`Server is running on Port: ${PORT}`);
 });
