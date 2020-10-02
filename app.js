@@ -14,7 +14,7 @@ const { Blog } = require(`${__dirname}/models/blogModel.js`);
 /* ***************************************
 DB CONNECTION
 *************************************** */
-mongoose.connect(process.env.DEV_DB_PATH, {
+mongoose.connect(process.env.PROD_DB_PATH, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
