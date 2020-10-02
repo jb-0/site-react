@@ -1,0 +1,46 @@
+import React, { useEffect, useState } from "react";
+import Navbar from "../common/Navbar";
+import Footer from "../common/Footer";
+import "../../styles/Blog.css";
+
+function Blog() {
+  const [blogPosts, setBlogPosts] = useState([]);
+
+  async function fetchData() {
+    const rawResponse = await fetch('/api/blog', {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    //TODO err handling response
+    setBlogPosts(await rawResponse.json());
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <div className="blog">
+      <Navbar />
+      <h1>Blog Posts</h1>
+      {blogPosts.map((blogPost) => {
+        return (
+          <div className="blog-post">
+            <h2>{blogPost.title}</h2>
+            <p>{blogPost.post.slice(0, 100)}....</p>
+            <form action={"/blog/" + blogPost._id}>
+              <button className="submit-button">Read</button>
+            </form>
+          </div>
+        );
+      })}
+      <Footer />
+    </div>
+  );
+}
+
+export default Blog;
