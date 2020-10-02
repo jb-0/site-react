@@ -5,10 +5,9 @@ import "../../styles/Blog.css"
 
 function BlogPost(props) {
   const [blogPost, setBlogPost] = useState([]);
-  const url = `http://localhost:4000/blog/${props.match.params.id}`;
 
   async function fetchData() {
-    const rawResponse = await fetch(url, {
+    const rawResponse = await fetch(`/api/blog/${props.match.params.id}`, {
       method: "GET",
       headers: {
         Accept: "application/json",

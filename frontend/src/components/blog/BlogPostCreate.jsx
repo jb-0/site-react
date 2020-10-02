@@ -15,9 +15,7 @@ function BlogPostCreate() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const url = 'http://localhost:4000/blog/create';
-
-    const rawResponse = await fetch(url, {
+    const rawResponse = await fetch('/api/create', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

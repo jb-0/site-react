@@ -10,9 +10,8 @@ function BlogPostEdit(props) {
     post: "",
   });
 
-  async function fetchData() {
-    const url = `http://localhost:4000/blog/${props.match.params.id}`;
-    const rawResponse = await fetch(url, {
+  async function fetchData() {;
+    const rawResponse = await fetch(`/api/blog/${props.match.params.id}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
