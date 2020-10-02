@@ -2,6 +2,7 @@ const { User } = require(`${__dirname}/../models/userModel.js`);
 const userRoutes = require('express').Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const auth = require(`${__dirname}/../middleware/auth.js`);
 
 userRoutes.post('/register', async (req, res) => {
   try {
@@ -85,6 +86,25 @@ userRoutes.post('/login', async (req, res) => {
         email: user.email,
       },
     });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+userRoutes.post('/isTokenValid', async (req, res) => {
+  try {
+    const token = req.header('x-auth-token');
+
+    if (!token) return res.json(false);
+
+    const verified = jwt.verify(token, process.env.JWT_TOKEN);
+
+    if (!verified) return res.json(false);
+
+    const user = await User.findById(verified.id);
+    if (!user) return res.json(false);
+
+    return res.json(true);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
