@@ -40,8 +40,6 @@ app.get('*', (req, res) => {
   res.sendFile(`${__dirname}/frontend/build/index.html`);
 });
 
-console.log(`${__dirname}/frontend/build`);
-
 app.listen(PORT, () => {
   console.log(`Server is running on Port: ${PORT}`);
 });
