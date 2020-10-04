@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../common/Navbar";
-import Footer from "../common/Footer";
 import BlogPostForm from "./BlogPostForm";
 import "../../styles/Forms.css";
 
@@ -38,10 +36,8 @@ function BlogPostCreate() {
 
   return (
     <div className="blog-post-create">
-      <Navbar />
       <h1>New blog post</h1>
       <BlogPostForm handleUpdates={handleUpdates} handleSubmit={handleSubmit} blogPost={blogPost}/>
-      <Footer />
     </div>
   );
 }

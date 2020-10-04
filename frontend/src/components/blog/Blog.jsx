@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../common/Navbar";
-import Footer from "../common/Footer";
 import "../../styles/Blog.css";
 
 function Blog() {
@@ -25,7 +23,6 @@ function Blog() {
 
   return (
     <div className="blog">
-      <Navbar />
       <h1>Blog Posts</h1>
       {blogPosts.map((blogPost) => {
         return (
@@ -38,7 +35,6 @@ function Blog() {
           </div>
         );
       })}
-      <Footer />
     </div>
   );
 }

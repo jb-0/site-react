@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../common/Navbar";
-import Footer from "../common/Footer";
 import "../../styles/Blog.css"
 
 function BlogPost(props) {
@@ -26,7 +24,6 @@ function BlogPost(props) {
 
   return (
     <div className="blog">
-      <Navbar />
       <div className="blog-post">
         <h1>{blogPost.title}</h1>
         <p>
@@ -35,7 +32,6 @@ function BlogPost(props) {
         <br />
         <p>{blogPost.post}</p>
       </div>
-      <Footer />
     </div>
   );
 }
