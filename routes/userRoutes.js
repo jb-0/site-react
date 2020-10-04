@@ -114,7 +114,7 @@ userRoutes.post('/isTokenValid', async (req, res) => {
 
 // Route to get username for a logged in user
 userRoutes.get('/', auth, async(req, res) => {
-  const user = await User.findById(res.user, {_id:1, email:1, displayName:1, active:1});
+  const user = await User.findById(res.user, {_id:1, displayName:1, active:1});
   res.json(user);
 });
 

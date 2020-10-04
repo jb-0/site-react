@@ -18,23 +18,40 @@ function App() {
   });
 
   async function checkLoggedIn() {
-    const token = localStorage.getItem('auth-token');
+    let token = localStorage.getItem('auth-token');
     if (token === null) {
       localStorage.setItem('auth-token', '');
       token = '';
     }
 
-    const tokenRes = await fetch('/api/users/isTokenValid', {
+    const rawResponse = await fetch('/api/users/isTokenValid', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
-        'x-auth-token': token
+        'x-auth-token': token,
       },
     });
 
-    if (await tokenRes.json())
-  };
+    const tokenRes = await rawResponse.json();
+
+    if (tokenRes) {
+      const rawResponse = await fetch('/api/users/', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+      });
+
+      const userRes = await rawResponse.json();
+      setUserData({
+        token,
+        user: userRes,
+      });
+    }
+  }
 
   useEffect(() => {
     checkLoggedIn();
