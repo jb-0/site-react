@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import "../../styles/Forms.css";
+import React, { useState } from 'react';
+import '../../styles/Forms.css';
 
 function ContactForm() {
   const [formText, setFormText] = useState({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: '',
   });
 
   function handleSubmit(event) {
@@ -15,14 +15,15 @@ function ContactForm() {
   function handleUpdates(event) {
     const target = event.target.name;
     const value = event.target.value;
-    
+
     setFormText((previousValues) => {
-      return {...previousValues, [target]: value}
+      return { ...previousValues, [target]: value };
     });
   }
 
   return (
     <div className="contact-form" id="contact">
+      <h1>Contact Me</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name </label>
         <br />

@@ -5,6 +5,10 @@
     font-size: 1.3rem;
 }
 
+.contact-form h1 {
+ font-size: 2rem;
+}
+
 .text-input {
     box-shadow: none;
     background-color:  #191923;
