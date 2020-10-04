@@ -21,6 +21,15 @@ const portfolioContent = [
     },
   },
   {
+    title: "Data Science: Twitter NLP",
+    content: `Using NLP and unsupervised learning I was able to predict a number of key events 
+      in a football match using tweets. This work was performed using Python and packages included: 
+      pandas, matplotlib, sklearn, nltk and wordcloud.`,
+    links: {
+      source: "https://github.com/jb-0/twitter-nlp",
+    },
+  },
+  {
     title: "Books",
     content: `Using Node.js, HTML and CSS I built a site that interacts with the nytimes books api 
         and allows users to select a genre and view charting books in the selected genre.`,
