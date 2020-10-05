@@ -35,7 +35,7 @@ function App() {
 
     const tokenRes = await rawResponse.json();
 
-    if (tokenRes) {
+    if (tokenRes === true) {
       const rawResponse = await fetch('/api/users/', {
         method: 'GET',
         headers: {
@@ -50,6 +50,12 @@ function App() {
         token,
         user: userRes,
       });
+    } else {
+      setUserData({
+        token: undefined,
+        user: undefined
+      });
+      localStorage.setItem('auth-token', '');
     }
   }
 
