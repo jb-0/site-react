@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+var enforce = require('express-sslify');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
