@@ -26,6 +26,7 @@ connection.once('open', () => {
 /* ***************************************
 APP CONFIG
 *************************************** */
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
