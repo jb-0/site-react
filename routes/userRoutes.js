@@ -26,7 +26,7 @@ userRoutes.post('/login', async (req, res) => {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_TOKEN);
+    const token = jwt.sign({ id: user.id }, process.env.JWT_TOKEN, { expiresIn: '5m' });
     res.json({
       token,
       user: {
