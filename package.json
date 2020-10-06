@@ -18,7 +18,8 @@
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.7"
+    "mongoose": "^5.10.7",
+    "rate-limiter-flexible": "^2.1.10"
   },
   "engines": {
     "node": "12.x",

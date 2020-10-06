@@ -4,40 +4,75 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const auth = require(`${__dirname}/../middleware/auth.js`);
 
+/* ***************************************
+RATE LIMITING
+*************************************** */
+const { RateLimiterMongo } = require('rate-limiter-flexible');
+const mongoose = require('mongoose');
+
+const mongoOpts = {
+  reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
+  reconnectInterval: 100, // Reconnect every 100ms
+};
+
+mongoose.connect(process.env.PROD_DB_PATH)
+  .catch((err) => {});
+const mongoConn = mongoose.createConnection(process.env.PROD_DB_PATH, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const opts = {
+  storeClient: mongoConn,
+  points: 7, // Number of points
+  duration: 20 * 60 * 1000, // Over 20 minutes
+};
+
+const rateLimiterMongo = new RateLimiterMongo(opts);
+
+/* ***************************************
+ROUTES
+*************************************** */
 // Login route
 userRoutes.post('/login', async (req, res) => {
-  try {
-    // A given user should supply an email and password
-    const { email, password } = req.body;
+  const remoteAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  rateLimiterMongo.consume(remoteAddress, 1) // consume one point
+  .then(async (rateLimiterRes) => {
+    try {
+      // A given user should supply an email and password
+      const { email, password } = req.body;
 
-    // Some basic validation is performed
-    if (!email || !password) {
-      return res.status(400).json({ msg: 'All fields must be complete' });
+      // Some basic validation is performed
+      if (!email || !password) {
+        return res.status(400).json({ msg: 'All fields must be complete' });
+      }
+
+      // Check to see if the user exists in the DB
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res.status(400).json({ msg: 'No account with this email found' });
+      }
+
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(400).json({ msg: 'Invalid credentials' });
+      }
+
+      const token = jwt.sign({ id: user.id }, process.env.JWT_TOKEN, { expiresIn: '5m' });
+      res.json({
+        token,
+        user: {
+          id: user.id,
+          displayName: user.displayName,
+          email: user.email,
+        },
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
     }
-
-    // Check to see if the user exists in the DB
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ msg: 'No account with this email found' });
-    }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ msg: 'Invalid credentials' });
-    }
-
-    const token = jwt.sign({ id: user.id }, process.env.JWT_TOKEN, { expiresIn: '5m' });
-    res.json({
-      token,
-      user: {
-        id: user.id,
-        displayName: user.displayName,
-        email: user.email,
-      },
+  }).catch((rateLimiterRes) => {
+    res.status(400).json({ msg: 'Too many failed attempts' });
     });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
 });
 
 // Route confirming whether or not user is logged in (has a valid token) as a boolean
