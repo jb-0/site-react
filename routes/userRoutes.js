@@ -3,29 +3,16 @@ const userRoutes = require('express').Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const auth = require(`${__dirname}/../middleware/auth.js`);
+const { RateLimiterMongo } = require('rate-limiter-flexible');
+const mongoose = require('mongoose');
 
 /* ***************************************
 RATE LIMITING
 *************************************** */
-const { RateLimiterMongo } = require('rate-limiter-flexible');
-const mongoose = require('mongoose');
-
-const mongoOpts = {
-  reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
-  reconnectInterval: 100, // Reconnect every 100ms
-};
-
-mongoose.connect(process.env.PROD_DB_PATH)
-  .catch((err) => {});
-const mongoConn = mongoose.createConnection(process.env.PROD_DB_PATH, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
 const opts = {
-  storeClient: mongoConn,
+  storeClient: mongoose.connection,
   points: 7, // Number of points
-  duration: 20 * 60 * 1000, // Over 20 minutes
+  duration: 60 * 60 * 24, // Lockout for 24 hours
 };
 
 const rateLimiterMongo = new RateLimiterMongo(opts);

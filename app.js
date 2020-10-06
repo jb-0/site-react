@@ -5,43 +5,48 @@ const enforce = require('express-sslify');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const { connection } = mongoose;
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-const { connection } = mongoose;
-const { User } = require(`${__dirname}/models/userModel.js`);
-const { Blog } = require(`${__dirname}/models/blogModel.js`);
 
-/* ***************************************
-DB CONNECTION
-*************************************** */
-mongoose.connect(process.env.PROD_DB_PATH, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+async function main() {
+  /* ***************************************
+  DB CONNECTION
+  *************************************** */
+  const DB_PATH = process.env.PROD ? process.env.PROD_DB_PATH : process.env.DEV_DB_PATH
+  
+  try {
+    await mongoose.connect(DB_PATH, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  }
+  catch (error) {
+    console.log(error);
+  }
 
-connection.once('open', () => {
-  console.log('MongoDB connection established');
-});
+  /* ***************************************
+  APP CONFIG
+  *************************************** */
+  if (process.env.PROD) app.use(enforce.HTTPS({ trustProtoHeader: true }));
+  app.use(cors());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
+  app.use('/api/blog', require(`${__dirname}/routes/blogRoutes.js`));
+  app.use('/api/users', require(`${__dirname}/routes/userRoutes.js`));
 
-/* ***************************************
-APP CONFIG
-*************************************** */
-if (process.env.PROD) app.use(enforce.HTTPS({ trustProtoHeader: true }));
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use('/api/blog', require(`${__dirname}/routes/blogRoutes.js`));
-app.use('/api/users', require(`${__dirname}/routes/userRoutes.js`));
+  /* ***************************************
+  FRONTEND LINKAGE
+  *************************************** */
+  app.use(express.static(`${__dirname}/frontend/build`));
+  app.get('*', (req, res) => {
+    res.sendFile(`${__dirname}/frontend/build/index.html`);
+  });
 
-/* ***************************************
-FRONTEND LINKAGE
-*************************************** */
-app.use(express.static(`${__dirname}/frontend/build`));
-app.get('*', (req, res) => {
-  res.sendFile(`${__dirname}/frontend/build/index.html`);
-});
+  app.listen(PORT, () => {
+    console.log(`Server is running on Port: ${PORT}`);
+  }); 
+}
 
-app.listen(PORT, () => {
-  console.log(`Server is running on Port: ${PORT}`);
-});
+main();
