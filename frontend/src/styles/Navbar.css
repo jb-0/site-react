@@ -18,3 +18,8 @@
   background-color: #BF1363;
   color: white;
 }
+
+.burger-nav {
+  text-align: left;
+  padding: 10px
+}
