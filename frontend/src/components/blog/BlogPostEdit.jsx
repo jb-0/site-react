@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from "react";
-import BlogPostForm from "./BlogPostForm";
+import React, { useState, useEffect } from 'react';
+import BlogPostForm from './BlogPostForm';
 import '../../styles/Forms.css';
+import UserContext from '../../context/UserContext';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import Login from '../user/Login';
 
 function BlogPostEdit(props) {
   const [blogPost, setBlogPost] = useState({
-    title: "",
-    post: "",
+    title: '',
+    post: '',
   });
 
-  async function fetchData() {;
+  async function fetchData() {
     const rawResponse = await fetch(`/api/blog/${props.match.params.id}`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
     });
 
@@ -33,15 +36,15 @@ function BlogPostEdit(props) {
     console.log(url);
 
     const rawResponse = await fetch(url, {
-    method: 'PATCH',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(blogPost)
-  });
-  //TODO err handling response
-  const content = rawResponse;
+      method: 'PATCH',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(blogPost),
+    });
+    //TODO err handling response
+    const content = rawResponse;
   }
 
   function handleUpdates(event) {
@@ -54,10 +57,22 @@ function BlogPostEdit(props) {
   }
 
   return (
-    <div className="blog-post-edit">
-      <h1>Edit blog post</h1>
-      <BlogPostForm handleUpdates={handleUpdates} handleSubmit={handleSubmit} blogPost={blogPost}/>
-    </div>
+    <UserContext.Consumer>
+      {(context) => {
+        if (context.userData.user) {
+          return (
+            <div className="blog-post-edit">
+              <h1>Edit blog post</h1>
+              <BlogPostForm
+                handleUpdates={handleUpdates}
+                handleSubmit={handleSubmit}
+                blogPost={blogPost}
+              />
+            </div>
+          );
+        }
+      }}
+    </UserContext.Consumer>
   );
 }
 
