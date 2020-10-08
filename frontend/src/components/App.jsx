@@ -7,6 +7,7 @@ import BlogPost from './blog/BlogPost';
 import Login from './user/Login';
 import Navbar from './common/Navbar';
 import Footer from './common/Footer';
+import PageNotFound from './common/PageNotFound';
 import UserContext from '../context/UserContext';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -74,6 +75,7 @@ function App() {
           <Route path="/blog-edit/:id" component={BlogPostEdit} />
           <Route path="/blog-create" component={BlogPostCreate} />
           <Route path="/login" component={Login} />
+          <Route path="*" component={PageNotFound} status={404} />
           <Footer />
         </UserContext.Provider>
       </Router>
