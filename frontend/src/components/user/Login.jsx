@@ -22,7 +22,6 @@ function Login() {
     });
 
     const loginRes = await rawResponse.json();
-    console.log(loginRes);
     setUserData({
       token: loginRes.token,
       user: loginRes.user
