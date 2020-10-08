@@ -19,7 +19,8 @@
     "express-sslify": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.7",
-    "rate-limiter-flexible": "^2.1.10"
+    "rate-limiter-flexible": "^2.1.10",
+    "sanitize-html": "^2.1.0"
   },
   "engines": {
     "node": "12.x",
