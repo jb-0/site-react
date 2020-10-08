@@ -15,7 +15,6 @@ function BlogPost(props) {
 
     //TODO err handling response
     setBlogPost(await rawResponse.json());
-    console.log(blogPost);
   }
 
   useEffect(() => {
@@ -24,14 +23,17 @@ function BlogPost(props) {
 
   return (
     <div className="blog">
+    {blogPost.title ? 
       <div className="blog-post">
         <h1>{blogPost.title}</h1>
         <p>
-          Written by {blogPost.author} on {blogPost.created_date}
+          Written by {blogPost.author} on {blogPost.created_date.substr(0, 10)}
         </p>
         <br />
         <p>{blogPost.post}</p>
       </div>
+      :
+      null }
     </div>
   );
 }
