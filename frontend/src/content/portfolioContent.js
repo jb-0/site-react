@@ -1,8 +1,8 @@
 const portfolioContent = [
   {
     title: "This Site",
-    content: `This site is my portfolio and blog, I built it using MongoDB, Express, Node.js and
-      React. The site includes authentication allowing me to create and edit blog posts.`,
+    content: `This site is my portfolio and blog, I built it using MongoDB, Express, React and 
+    Node.js. The site includes authentication allowing me to create and edit blog posts.`,
     links: {
       site: "http://www.jamiebarrett.co.uk/",
       source: "https://github.com/jb-0/site-react",
@@ -23,8 +23,8 @@ const portfolioContent = [
   {
     title: "Data Science: Twitter NLP",
     content: `Using NLP and unsupervised learning I was able to predict a number of key events 
-      in a football match using tweets. This work was performed using Python and packages included: 
-      pandas, matplotlib, sklearn, nltk and wordcloud.`,
+      in a football match using tweets. This work was performed using Python, Jupyter, Anaconda and 
+      packages such as: pandas, matplotlib, sklearn, nltk and wordcloud.`,
     links: {
       source: "https://github.com/jb-0/twitter-nlp",
     },
