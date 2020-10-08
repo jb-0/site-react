@@ -10,7 +10,7 @@ import Footer from './common/Footer';
 import PageNotFound from './common/PageNotFound';
 import UserContext from '../context/UserContext';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   const [userData, setUserData] = useState({
@@ -54,7 +54,7 @@ function App() {
     } else {
       setUserData({
         token: undefined,
-        user: undefined
+        user: undefined,
       });
       localStorage.setItem('auth-token', '');
     }
@@ -69,13 +69,15 @@ function App() {
       <Router>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Navbar />
-          <Route path="/" exact component={Home} />
-          <Route path="/blog" exact component={Blog} />
-          <Route path="/blog/:id" component={BlogPost} />
-          <Route path="/blog-edit/:id" component={BlogPostEdit} />
-          <Route path="/blog-create" component={BlogPostCreate} />
-          <Route path="/login" component={Login} />
-          <Route path="*" component={PageNotFound} status={404} />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/blog" exact component={Blog} />
+            <Route path="/blog/:id" component={BlogPost} />
+            <Route path="/blog-edit/:id" component={BlogPostEdit} />
+            <Route path="/blog-create" component={BlogPostCreate} />
+            <Route path="/login" component={Login} />
+            <Route path="*" component={PageNotFound} status={404} />
+          </Switch>
           <Footer />
         </UserContext.Provider>
       </Router>
