@@ -7,6 +7,7 @@ const permittedHtml = {
     allowedTags: ['b', 'i', 'em', 'strong', 'a', 'img', 'p', 'h2'],
     allowedAttributes: {
       a: ['href'],
+      img: [ 'src' ]
     }
   };
 
