@@ -41,7 +41,7 @@ function BlogPost(props) {
             {blogPost.created_date.substr(0, 10)}
           </p>
           <br />
-          <p>{blogPost.post}</p>
+          <div dangerouslySetInnerHTML={{ __html: blogPost.post }} />
         </div>
       ) : null}
     </div>
