@@ -32,7 +32,7 @@ function BlogPostEdit(props) {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const url = `http://localhost:4000/blog/edit/${props.match.params.id}`;
+    const url = `http://localhost:4000/api/blog/edit/${props.match.params.id}`;
     console.log(url);
 
     const rawResponse = await fetch(url, {
