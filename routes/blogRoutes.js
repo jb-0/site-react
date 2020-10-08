@@ -19,6 +19,7 @@ blogRoutes.get('/:id', (req, res) => {
   Blog.findById(id, (err, blogPost) => {
     if (err) {
       console.log(err);
+      res.status(404).send('blog does not exist');
     } else {
       res.json(blogPost);
     }
