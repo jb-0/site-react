@@ -28,10 +28,9 @@ function BlogPost(props) {
   }, []);
 
   if (pageNotFound) {
-    console.log(pageNotFound);
     return (<Redirect to="/404" />)
   };
-  
+
   return (
     <div className="blog">
       {blogPost.title ? (

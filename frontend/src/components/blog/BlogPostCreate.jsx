@@ -2,10 +2,9 @@ import React, { useContext, useState } from 'react';
 import BlogPostForm from './BlogPostForm';
 import '../../styles/Forms.css';
 import UserContext from '../../context/UserContext';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import Login from '../user/Login';
 
 function BlogPostCreate() {
+  const { userData, setUserData } = useContext(UserContext);
   const [blogPost, setBlogPost] = useState({
     title: '',
     author: '',
@@ -15,12 +14,12 @@ function BlogPostCreate() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
-    const rawResponse = await fetch('/api/create', {
+    const rawResponse = await fetch('/api/blog/create', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        'x-auth-token': userData.token,
       },
       body: JSON.stringify(blogPost),
     });

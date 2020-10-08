@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import BlogPostForm from './BlogPostForm';
 import '../../styles/Forms.css';
 import UserContext from '../../context/UserContext';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import Login from '../user/Login';
 
 function BlogPostEdit(props) {
+  const { userData, setUserData } = useContext(UserContext);
   const [blogPost, setBlogPost] = useState({
     title: '',
     post: '',
@@ -22,7 +21,6 @@ function BlogPostEdit(props) {
 
     //TODO err handling response
     setBlogPost(await rawResponse.json());
-    console.log(blogPost);
   }
 
   useEffect(() => {
@@ -33,13 +31,13 @@ function BlogPostEdit(props) {
     event.preventDefault();
 
     const url = `http://localhost:4000/api/blog/edit/${props.match.params.id}`;
-    console.log(url);
 
     const rawResponse = await fetch(url, {
       method: 'PATCH',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        'x-auth-token': userData.token,
       },
       body: JSON.stringify(blogPost),
     });
