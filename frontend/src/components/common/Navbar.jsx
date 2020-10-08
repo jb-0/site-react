@@ -18,7 +18,6 @@ function Navbar() {
 
   function handleBurgerClick() {
     setBurgerItemsVisible(!burgerItemsVisible);
-    console.log(burgerItemsVisible);
   };
 
   useLayoutEffect(() => {
