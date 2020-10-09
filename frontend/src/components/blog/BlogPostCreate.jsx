@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import BlogPostForm from './BlogPostForm';
 import '../../styles/Forms.css';
 import UserContext from '../../context/UserContext';
@@ -14,6 +14,11 @@ function BlogPostCreate() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+
+    setBlogPost((previousValues) => {
+      return { ...previousValues, author: userData.user.displayName };
+    });
+
     const rawResponse = await fetch('/api/blog/create', {
       method: 'POST',
       headers: {
@@ -23,7 +28,7 @@ function BlogPostCreate() {
       },
       body: JSON.stringify(blogPost),
     });
-    //TODO handling response
+    
     const content = await rawResponse.json();
   }
 
