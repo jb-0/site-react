@@ -13,13 +13,19 @@ function Blog() {
       },
     });
 
-    //TODO err handling response
     setBlogPosts(await rawResponse.json());
   }
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  function generatePostPreview(blogPost) {
+    const blogPostWithoutHtmlTags = blogPost.replace(/<.*>/, '');
+    const previewText = `${blogPostWithoutHtmlTags.slice(0, 100).trim()}...`
+
+    return previewText
+  }
 
   return (
     <div className="blog">
@@ -28,7 +34,7 @@ function Blog() {
         return (
           <div className="blog-post">
             <h2>{blogPost.title}</h2>
-            <p>{blogPost.post.slice(0, 100)}....</p>
+            <p>{generatePostPreview(blogPost.post)}</p>
             <form action={"/blog/" + blogPost._id}>
               <button className="submit-button">Read</button>
             </form>
