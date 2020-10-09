@@ -8,8 +8,20 @@ function ContactForm() {
     message: '',
   });
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    console.log(formText);
+
+    const rawResponse = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formText),
+    });
+    
+    const content = await rawResponse.json();
   }
 
   function handleUpdates(event) {
