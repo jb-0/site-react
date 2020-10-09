@@ -2,10 +2,11 @@
     font-family: 'Permanent Marker', cursive;
     font-size: 3.5rem;
     color: #F39237;
+    margin: 0px;
 }
 
 .intro {
     color: #FBFEF9;
-    padding: 80px 12.5%;
+    padding: 90px 12.5%;
     font-size: 1.3rem;
   }
