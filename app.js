@@ -35,6 +35,7 @@ async function main() {
   app.use(bodyParser.json());
   app.use('/api/blog', require(`${__dirname}/routes/blogRoutes.js`));
   app.use('/api/users', require(`${__dirname}/routes/userRoutes.js`));
+  app.use('/api/contact', require(`${__dirname}/routes/contactRoutes.js`));
 
   /* ***************************************
   FRONTEND LINKAGE
