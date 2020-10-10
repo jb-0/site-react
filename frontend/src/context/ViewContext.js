@@ -22,4 +22,4 @@ export const ViewProvider = (props) => {
   return <ViewContext.Provider value={ size }>{props.children}</ViewContext.Provider>;
 };
 
-export default createContext(null);
+// export default createContext(null);

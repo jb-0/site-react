@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import BlogPostForm from './BlogPostForm';
 import '../../styles/Forms.css';
-import UserContext from '../../context/UserContext';
+import {UserContext} from '../../context/UserContext';
 
 function BlogPostCreate() {
   const { userData, setUserData } = useContext(UserContext);

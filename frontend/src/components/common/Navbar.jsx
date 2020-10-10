@@ -1,6 +1,6 @@
 import React, { useContext, useState, useLayoutEffect } from 'react';
 import '../../styles/Navbar.css';
-import UserContext from '../../context/UserContext';
+import {UserContext} from '../../context/UserContext';
 import { ViewContext } from '../../context/ViewContext';
 import MenuIcon from '@material-ui/icons/Menu';
 
