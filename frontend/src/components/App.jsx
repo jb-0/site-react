@@ -9,6 +9,7 @@ import Navbar from './common/Navbar';
 import Footer from './common/Footer';
 import PageNotFound from './common/PageNotFound';
 import UserContext from '../context/UserContext';
+import {ViewProvider} from '../context/ViewContext'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -67,6 +68,7 @@ function App() {
   return (
     <div className="app">
       <Router>
+        <ViewProvider>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Navbar />
           <Switch>
@@ -80,6 +82,7 @@ function App() {
           </Switch>
           <Footer />
         </UserContext.Provider>
+        </ViewProvider>
       </Router>
     </div>
   );

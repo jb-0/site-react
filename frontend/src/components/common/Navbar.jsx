@@ -1,12 +1,13 @@
 import React, { useContext, useState, useLayoutEffect } from 'react';
 import '../../styles/Navbar.css';
 import UserContext from '../../context/UserContext';
+import { ViewContext } from '../../context/ViewContext';
 import MenuIcon from '@material-ui/icons/Menu';
 
 function Navbar() {
   const { userData, setUserData } = useContext(UserContext);
-  const [size, setSize] = useState({ width: window.innerWidth, height: window.innerHeight });
   const [burgerItemsVisible, setBurgerItemsVisible] = useState(false);
+  const size = useContext(ViewContext);
 
   function handleLogout() {
     setUserData({
@@ -19,15 +20,6 @@ function Navbar() {
   function handleBurgerClick() {
     setBurgerItemsVisible(!burgerItemsVisible);
   };
-
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize({ width: window.innerWidth, height: window.innerHeight });
-    }
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
 
   const navbarItems = (
     <div className="navbarItems">
