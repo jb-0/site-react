@@ -26,7 +26,7 @@ blogRoutes.get('/', (req, res) => {
     } else {
       res.json(blogPosts);
     }
-  });
+  }).sort({ created_date: 'desc' });
 });
 
 // Route to return a specific blog post
