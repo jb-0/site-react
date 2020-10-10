@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../../styles/Forms.css';
+import { ViewContext } from '../../context/ViewContext';
 
 function ContactForm() {
+  const size = useContext(ViewContext);
   const [formText, setFormText] = useState({
     name: '',
     email: '',
@@ -20,7 +22,7 @@ function ContactForm() {
       },
       body: JSON.stringify(formText),
     });
-    
+
     const content = await rawResponse.json();
   }
 
@@ -34,7 +36,10 @@ function ContactForm() {
   }
 
   return (
-    <div className="contact-form" id="contact">
+    <div
+      className={size.width > 440 ? 'contact-form' : 'contact-form contact-form-mobile'}
+      id="contact"
+    >
       <h1>Contact Me</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name </label>

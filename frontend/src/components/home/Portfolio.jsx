@@ -14,7 +14,7 @@ function Portfolio() {
         className={
           size.width > 440
             ? 'portfolio-cards-section'
-            : 'portfolio-cards-section mobile'
+            : 'portfolio-cards-section portfolio-cards-section-mobile'
         }
       >
         {portfolioContent.map((portfolioItem, key) => {

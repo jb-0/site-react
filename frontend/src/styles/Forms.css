@@ -1,7 +1,7 @@
 .contact-form {
     padding: 80px 12.5%;
     display: block;
-    width: 75%;
+    /* width: 75%; */
     font-size: 1.3rem;
 }
 
@@ -16,10 +16,15 @@
     border-style: solid;
     border-color:  #F39237;
     color: white;
-    width: 75%;
+    width: 400px;
     font-size: 1rem;
     border-radius: 10px;
     outline-width: 0;
+}
+
+.contact-form-mobile .text-input {
+    background-color: red;
+    width: 90%;
 }
 
 .submit-button {
