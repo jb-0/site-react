@@ -5,7 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 function Navbar() {
   const { userData, setUserData } = useContext(UserContext);
-  const [size, setSize] = useState({ width: 0, height: 0 });
+  const [size, setSize] = useState({ width: window.innerWidth, height: window.innerHeight });
   const [burgerItemsVisible, setBurgerItemsVisible] = useState(false);
 
   function handleLogout() {
