@@ -21,7 +21,7 @@ function Blog() {
   }, []);
 
   function generatePostPreview(blogPost) {
-    const blogPostWithoutHtmlTags = blogPost.replace(/<.*>/, '');
+    const blogPostWithoutHtmlTags = blogPost.replace(/(<([^>]+)>)/ig, '');
     const previewText = `${blogPostWithoutHtmlTags.slice(0, 100).trim()}...`
 
     return previewText
