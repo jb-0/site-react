@@ -1,22 +1,7 @@
 const { Blog } = require(`${__dirname}/../models/blogModel.js`);
 const blogRoutes = require('express').Router();
 const auth = require(`${__dirname}/../middleware/auth.js`);
-const sanitizeHtml = require('sanitize-html');
-
-const permittedHtml = {
-    allowedTags: ['b', 'i', 'em', 'strong', 'a', 'img', 'p', 'h2'],
-    allowedAttributes: {
-      a: ['href'],
-      img: [ 'src' ]
-    }
-  };
-
-function sanitizeBlogPost(blogPost) {
-  const sanitizedBlogPost = blogPost;
-  sanitizedBlogPost.post = sanitizeHtml(blogPost.post, permittedHtml)
-  return sanitizedBlogPost
-}
-
+const { sanitizeBlogPost } = require(`${__dirname}/../services/blogServices.js`);
 
 // Route to return all blog posts
 blogRoutes.get('/', (req, res) => {
