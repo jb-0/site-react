@@ -1,7 +1,8 @@
 const contactRoutes = require('express').Router();
 const Email = require('email-templates');
+const frontendCheck = require(`${__dirname}/../middleware/frontendCheck.js`);
 
-contactRoutes.post('/', (req, res) => {
+contactRoutes.post('/', frontendCheck, (req, res) => {
   const email = new Email({
     message: {
       from: req.body.email,

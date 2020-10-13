@@ -3,6 +3,7 @@ const userRoutes = require('express').Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const auth = require(`${__dirname}/../middleware/auth.js`);
+const frontendCheck = require(`${__dirname}/../middleware/frontendCheck.js`);
 const { RateLimiterMongo } = require('rate-limiter-flexible');
 const mongoose = require('mongoose');
 
@@ -21,7 +22,7 @@ const rateLimiterMongo = new RateLimiterMongo(opts);
 ROUTES
 *************************************** */
 // Login route
-userRoutes.post('/login', async (req, res) => {
+userRoutes.post('/login', frontendCheck, async (req, res) => {
   const remoteAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   rateLimiterMongo.consume(remoteAddress, 1) // consume one point
   .then(async (rateLimiterRes) => {
@@ -63,7 +64,7 @@ userRoutes.post('/login', async (req, res) => {
 });
 
 // Route confirming whether or not user is logged in (has a valid token) as a boolean
-userRoutes.post('/isTokenValid', async (req, res) => {
+userRoutes.post('/isTokenValid', frontendCheck, async (req, res) => {
   try {
     const token = req.header('x-auth-token');
 
@@ -83,7 +84,7 @@ userRoutes.post('/isTokenValid', async (req, res) => {
 });
 
 // Route to get username for a logged in user
-userRoutes.get('/', auth, async(req, res) => {
+userRoutes.get('/', [auth, frontendCheck], async(req, res) => {
   const user = await User.findById(res.user, {_id:1, displayName:1, active:1});
   res.json(user);
 });

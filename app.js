@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const enforce = require('express-sslify');
 const bodyParser = require('body-parser');
-// const cors = require('cors');
 const mongoose = require('mongoose');
 const { connection } = mongoose;
 
@@ -30,7 +29,6 @@ async function main() {
   APP CONFIG
   *************************************** */
   if (process.env.PROD) app.use(enforce.HTTPS({ trustProtoHeader: true }));
-  // app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use('/api/blog', require(`${__dirname}/routes/blogRoutes.js`));

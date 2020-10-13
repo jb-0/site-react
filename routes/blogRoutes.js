@@ -1,10 +1,11 @@
 const { Blog } = require(`${__dirname}/../models/blogModel.js`);
 const blogRoutes = require('express').Router();
 const auth = require(`${__dirname}/../middleware/auth.js`);
+const frontendCheck = require(`${__dirname}/../middleware/frontendCheck.js`);
 const { sanitizeBlogPost } = require(`${__dirname}/../services/blogServices.js`);
 
 // Route to return all blog posts
-blogRoutes.get('/', (req, res) => {
+blogRoutes.get('/', frontendCheck, (req, res) => {
   Blog.find((err, blogPosts) => {
     if (err) {
       console.log(err);
@@ -15,7 +16,7 @@ blogRoutes.get('/', (req, res) => {
 });
 
 // Route to return a specific blog post
-blogRoutes.get('/:id', (req, res) => {
+blogRoutes.get('/:id', frontendCheck, (req, res) => {
   const { id } = req.params;
   Blog.findById(id, (err, blogPost) => { 
     if (err) {
@@ -31,7 +32,7 @@ blogRoutes.get('/:id', (req, res) => {
 });
 
 // Route to create a new blog post
-blogRoutes.post('/create', auth, (req, res) => {
+blogRoutes.post('/create', [auth, frontendCheck], (req, res) => {
   let blog = new Blog({
     title: req.body.title,
     post: req.body.post,
@@ -51,7 +52,7 @@ blogRoutes.post('/create', auth, (req, res) => {
 });
 
 // Route to patch (edit) a blog post
-blogRoutes.patch('/edit/:id', auth, (req, res) => {
+blogRoutes.patch('/edit/:id', [auth, frontendCheck], (req, res) => {
   let blog = req.body
 
   blog = sanitizeBlogPost(blog);
