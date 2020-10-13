@@ -13,6 +13,7 @@ const { Blog } = require('../models/blogModel.js');
 // *************************************
 describe('Blog routes', function () {
   let token = '';
+  const generatedBlogIds = {};
 
   // Authenticate before creating blog posts and clear prior test data
   before(async function () {
@@ -75,6 +76,12 @@ describe('Blog routes', function () {
           assert.strictEqual(res.status, 200);
           assert.strictEqual(res.body.length, 10);
         });
+    });
+  });
+
+  describe('GET /api/blog/:id', function () {
+    it('specific blog returned', function () {
+
     });
   });
 });
