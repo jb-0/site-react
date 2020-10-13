@@ -82,6 +82,29 @@ describe('Blog routes', function () {
     });
   });
 
+  describe('POST /api/blog/edit/:id', function () {
+    it('specific blog can be edited', function () {
+      const testIteration = 1;
+      const testBlog = generatedBlogs.find(
+        (blog) => blog.iteration === testIteration
+      );
+      
+      request(app)
+        .post(`/api/blog/edit/${testBlog._id}`)
+        .set({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        })
+        .send({
+          title: `${i} Dummy Blog edited`,
+        })
+        .then((res) => {
+          assert.strictEqual(res.status, 200);
+        });
+    });
+  });
+
   describe('GET /api/blog/:id', function () {
     it('specific blog returned', function () {
       const testIteration = 1;
