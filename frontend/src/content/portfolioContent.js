@@ -2,7 +2,8 @@ const portfolioContent = [
   {
     title: "This Site",
     content: `This site is my portfolio and blog, I built it using MongoDB, Express, React and 
-    Node.js. The site includes authentication allowing me to create and edit blog posts.`,
+    Node.js. Tests created using Mocha and Chai. The site includes authentication allowing me to 
+    create and edit blog posts. I've also implemented rate limiting to prevent undesired activity.`,
     links: {
       site: "http://www.jamiebarrett.co.uk/",
       source: "https://github.com/jb-0/site-react",
