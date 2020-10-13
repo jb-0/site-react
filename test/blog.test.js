@@ -24,10 +24,13 @@ describe('Blog routes', function () {
     });
 
     // Login
-    const res = await request(app).post('/api/users/login').send({
-      email: process.env.TEST_USER,
-      password: process.env.TEST_USER_PASSWORD,
-    });
+    const res = await request(app)
+      .post('/api/users/login')
+      .set({ frontend: 'react-frontend' })
+      .send({
+        email: process.env.TEST_USER,
+        password: process.env.TEST_USER_PASSWORD,
+      });
 
     // Ensure this is successful, otherwise future tests will fail and effort may be wasted trying
     // to find the cause
@@ -38,7 +41,9 @@ describe('Blog routes', function () {
 
   describe('POST /api/create', function () {
     it('create blog denied for unauthenticated user', async function () {
-      const res = await request(app).post('/api/blog/create');
+      const res = await request(app)
+        .post('/api/blog/create')
+        .set({ frontend: 'react-frontend' });
 
       assert.strictEqual(res.status, 401);
     });
@@ -52,6 +57,7 @@ describe('Blog routes', function () {
             Accept: 'application/json',
             'Content-Type': 'application/json',
             'x-auth-token': token,
+            frontend: 'react-frontend',
           })
           .send({
             title: `${i} Dummy Blog`,
@@ -71,7 +77,9 @@ describe('Blog routes', function () {
 
   describe('GET /api/blog', function () {
     it('all blog posts returned', async function () {
-      const res = await request(app).get('/api/blog');
+      const res = await request(app)
+        .get('/api/blog')
+        .set({ frontend: 'react-frontend' });
 
       assert.strictEqual(res.status, 200);
       assert.strictEqual(res.body.length, 10);
@@ -82,7 +90,7 @@ describe('Blog routes', function () {
     it('specific blog can be edited', async function () {
       const testIteration = 1;
       const testBlog = generatedBlogs.find(
-        (blog) => blog.iteration === testIteration,
+        (blog) => blog.iteration === testIteration
       );
 
       const res = await request(app)
@@ -91,6 +99,7 @@ describe('Blog routes', function () {
           Accept: 'application/json',
           'Content-Type': 'application/json',
           'x-auth-token': token,
+          frontend: 'react-frontend',
         })
         .send({
           title: `${testIteration} Dummy Blog edited`,
@@ -104,10 +113,12 @@ describe('Blog routes', function () {
     it('specific blog returned', async function () {
       const testIteration = 1;
       const testBlog = generatedBlogs.find(
-        (blog) => blog.iteration === testIteration,
+        (blog) => blog.iteration === testIteration
       );
 
-      const res = await request(app).get(`/api/blog/${testBlog._id}`);
+      const res = await request(app)
+        .get(`/api/blog/${testBlog._id}`)
+        .set({ frontend: 'react-frontend' });
 
       assert.strictEqual(res.body.title, `${testIteration} Dummy Blog edited`);
     });
