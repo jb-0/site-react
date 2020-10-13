@@ -16,6 +16,7 @@ function BlogPostEdit(props) {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        frontend: 'react-frontend',
       },
     });
 
@@ -38,6 +39,7 @@ function BlogPostEdit(props) {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         'x-auth-token': userData.token,
+        frontend: 'react-frontend',
       },
       body: JSON.stringify(blogPost),
     });

@@ -19,6 +19,7 @@ function ContactForm() {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        frontend: 'react-frontend',
       },
       body: JSON.stringify(formText),
     });

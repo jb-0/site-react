@@ -16,7 +16,8 @@ function Login() {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        frontend: 'react-frontend',
       },
       body: JSON.stringify(formText)
     });

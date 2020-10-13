@@ -24,6 +24,7 @@ export const UserProvider = (props) => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         'x-auth-token': token,
+        frontend: 'react-frontend',
       },
     });
 
@@ -36,6 +37,7 @@ export const UserProvider = (props) => {
           Accept: 'application/json',
           'Content-Type': 'application/json',
           'x-auth-token': token,
+          frontend: 'react-frontend',
         },
       });
 

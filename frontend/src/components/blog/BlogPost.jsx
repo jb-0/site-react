@@ -12,6 +12,7 @@ function BlogPost(props) {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        frontend: 'react-frontend',
       },
     });
 

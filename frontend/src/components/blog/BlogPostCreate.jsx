@@ -25,6 +25,7 @@ function BlogPostCreate() {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         'x-auth-token': userData.token,
+        frontend: 'react-frontend',
       },
       body: JSON.stringify(blogPost),
     });
