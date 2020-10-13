@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable prefer-arrow-callback */
 const request = require('supertest');
-const assert = require('assert');
+const { assert } = require('chai');
 
 const { sanitizeBlogPost } = require('../services/blogServices.js');
 const app = require('../app.js');
@@ -19,7 +19,7 @@ describe('Blog routes', function () {
     // Clear blogs collection
     Blog.deleteMany({}, (err) => {
       // If this fails for any reason then this should be flagged
-      assert.strictEqual(err, null);
+      assert.isNotTrue(err);
     });
 
     // Login
@@ -36,17 +36,18 @@ describe('Blog routes', function () {
   });
 
   describe('POST /api/create', function () {
-    this.timeout(10000);
-
-    it('create blog denied for unauthenticated user', async function () {
-      const res = await request(app).post('/api/blog/create');
-      assert.strictEqual(res.status, 401);
+    it('create blog denied for unauthenticated user', function () {
+      request(app)
+        .post('/api/blog/create')
+        .then((res) => {
+          assert.strictEqual(res.status, 401);
+        });
     });
 
     it('create blogs with authenticated user', async function () {
       for (let i = 0; i < 10; i++) {
         // eslint-disable-next-line no-await-in-loop
-        const res = await request(app)
+        await request(app)
           .post('/api/blog/create')
           .set({
             Accept: 'application/json',
@@ -58,18 +59,22 @@ describe('Blog routes', function () {
             author: 'Ghost',
             post: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
             created_date: new Date(),
+          })
+          .then((res) => {
+            assert.strictEqual(res.status, 200);
           });
-        assert.strictEqual(res.status, 200);
       }
     });
   });
 
   describe('GET /api/blog', function () {
-    this.timeout(10000);
-
-    it('all blog posts returned', async function () {
-      const res = await request(app).get('/api/blog');
-      assert.strictEqual(res.status, 200);
+    it('all blog posts returned', function () {
+      request(app)
+        .get('/api/blog')
+        .then((res) => {
+          assert.strictEqual(res.status, 200);
+          assert.strictEqual(res.body.length, 10);
+        });
     });
   });
 });
