@@ -37,18 +37,16 @@ describe('Blog routes', function () {
   });
 
   describe('POST /api/create', function () {
-    it('create blog denied for unauthenticated user', function () {
-      request(app)
-        .post('/api/blog/create')
-        .then((res) => {
-          assert.strictEqual(res.status, 401);
-        });
+    it('create blog denied for unauthenticated user', async function () {
+      const res = await request(app).post('/api/blog/create');
+
+      assert.strictEqual(res.status, 401);
     });
 
-    it('create blogs with authenticated user', function () {
+    it('create blogs with authenticated user', async function () {
       for (let i = 0; i < 10; i++) {
         // eslint-disable-next-line no-await-in-loop
-        request(app)
+        const res = await request(app)
           .post('/api/blog/create')
           .set({
             Accept: 'application/json',
@@ -60,63 +58,58 @@ describe('Blog routes', function () {
             author: 'Ghost',
             post: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
             created_date: new Date(),
-          })
-          .then((res) => {
-            const blog = res.body.content;
-            blog.iteration = i;
-            generatedBlogs.push(blog);
-            assert.strictEqual(res.status, 200);
           });
+
+        const blog = res.body.content;
+        blog.iteration = i;
+        generatedBlogs.push(blog);
+
+        assert.strictEqual(res.status, 200);
       }
     });
   });
 
   describe('GET /api/blog', function () {
-    it('all blog posts returned', function () {
-      request(app)
-        .get('/api/blog')
-        .then((res) => {
-          assert.strictEqual(res.status, 200);
-          assert.strictEqual(res.body.length, 10);
-        });
+    it('all blog posts returned', async function () {
+      const res = await request(app).get('/api/blog');
+
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.length, 10);
     });
   });
 
   describe('POST /api/blog/edit/:id', function () {
-    it('specific blog can be edited', function () {
+    it('specific blog can be edited', async function () {
       const testIteration = 1;
       const testBlog = generatedBlogs.find(
-        (blog) => blog.iteration === testIteration
+        (blog) => blog.iteration === testIteration,
       );
-      
-      request(app)
-        .post(`/api/blog/edit/${testBlog._id}`)
+
+      const res = await request(app)
+        .patch(`/api/blog/edit/${testBlog._id}`)
         .set({
           Accept: 'application/json',
           'Content-Type': 'application/json',
           'x-auth-token': token,
         })
         .send({
-          title: `${i} Dummy Blog edited`,
-        })
-        .then((res) => {
-          assert.strictEqual(res.status, 200);
+          title: `${testIteration} Dummy Blog edited`,
         });
+
+      assert.strictEqual(res.status, 200);
     });
   });
 
   describe('GET /api/blog/:id', function () {
-    it('specific blog returned', function () {
+    it('specific blog returned', async function () {
       const testIteration = 1;
       const testBlog = generatedBlogs.find(
-        (blog) => blog.iteration === testIteration
+        (blog) => blog.iteration === testIteration,
       );
 
-      request(app)
-        .get(`/api/blog/${testBlog._id}`)
-        .then((res) => {
-          assert.strictEqual(res.body.title, `${testIteration} Dummy Blog`);
-        });
+      const res = await request(app).get(`/api/blog/${testBlog._id}`);
+
+      assert.strictEqual(res.body.title, `${testIteration} Dummy Blog edited`);
     });
   });
 });
@@ -125,7 +118,7 @@ describe('Blog routes', function () {
 // BLOG SERVICES TESTS
 // *************************************
 describe('Blog services', function () {
-  it('html is appropriately sanitized', () => {
+  it('html is appropriately sanitized', function () {
     const unsanitizedBlog = {
       post: '<script></script><h2>hello</h2><unknown>',
     };

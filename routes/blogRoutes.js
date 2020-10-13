@@ -53,7 +53,6 @@ blogRoutes.post('/create', auth, (req, res) => {
 // Route to patch (edit) a blog post
 blogRoutes.patch('/edit/:id', auth, (req, res) => {
   let blog = req.body
-  console.log(blog);
 
   blog = sanitizeBlogPost(blog);
 
