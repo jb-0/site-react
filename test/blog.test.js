@@ -13,7 +13,7 @@ const { Blog } = require('../models/blogModel.js');
 // *************************************
 describe('Blog routes', function () {
   let token = '';
-  const generatedBlogIds = {};
+  const generatedBlogs = [];
 
   // Authenticate before creating blog posts and clear prior test data
   before(async function () {
@@ -45,10 +45,10 @@ describe('Blog routes', function () {
         });
     });
 
-    it('create blogs with authenticated user', async function () {
+    it('create blogs with authenticated user', function () {
       for (let i = 0; i < 10; i++) {
         // eslint-disable-next-line no-await-in-loop
-        await request(app)
+        request(app)
           .post('/api/blog/create')
           .set({
             Accept: 'application/json',
@@ -62,6 +62,9 @@ describe('Blog routes', function () {
             created_date: new Date(),
           })
           .then((res) => {
+            const blog = res.body.content;
+            blog.iteration = i;
+            generatedBlogs.push(blog);
             assert.strictEqual(res.status, 200);
           });
       }
@@ -81,7 +84,16 @@ describe('Blog routes', function () {
 
   describe('GET /api/blog/:id', function () {
     it('specific blog returned', function () {
+      const testIteration = 1;
+      const testBlog = generatedBlogs.find(
+        (blog) => blog.iteration === testIteration
+      );
 
+      request(app)
+        .get(`/api/blog/${testBlog._id}`)
+        .then((res) => {
+          assert.strictEqual(res.body.title, `${testIteration} Dummy Blog`);
+        });
     });
   });
 });
