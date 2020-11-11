@@ -1,12 +1,12 @@
 const portfolioContent = [
   {
-    title: "Skill Search (In Progress) - Full Stack",
-    content: `This site helps jobs seekers track skill demand in their area, the backend is complete
-    and the frontend is actively being enhanced to improve functionality. The site includes Passport 
+    title: "Skill Search - Full Stack",
+    content: `This site helps job seekers track skill demand in their area. The site includes Passport 
     authentication via Google and Facebook allowing user's to save searches relevant to them. It was 
     built using MongoDB, Express, React and Node.js. Backend tests created using Mocha and Chai, 
     with frontend tests created using Jest and React Testing Library.`,
     links: {
+      site: "https://the-skills-tracker.herokuapp.com/",
       source: "https://github.com/jb-0/skill-search",
     },
   },
