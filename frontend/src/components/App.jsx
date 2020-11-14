@@ -23,11 +23,6 @@ function App() {
           <Navbar />
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/blog" exact component={Blog} />
-            <Route path="/blog/:id" component={BlogPost} />
-            <Route path="/blog-edit/:id" component={BlogPostEdit} />
-            <Route path="/blog-create" component={BlogPostCreate} />
-            <Route path="/login" component={Login} />
             <Route path="*" component={PageNotFound} status={404} />
           </Switch>
           <Footer />

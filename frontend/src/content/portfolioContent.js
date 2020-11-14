@@ -11,16 +11,6 @@ const portfolioContent = [
     },
   },
   {
-    title: "This Site - Full Stack",
-    content: `This site is my portfolio and blog, I built it using MongoDB, Express, React and
-    Node.js. Tests created using Mocha and Chai. The site includes authentication allowing me to
-    create and edit blog posts. I've also implemented rate limiting to prevent undesired activity.`,
-    links: {
-      site: "http://www.jamiebarrett.co.uk/",
-      source: "https://github.com/jb-0/site-react",
-    },
-  },
-  {
     title: "UK Property API - Full Stack",
     content: `This is a Node.js project that utilises web scraping (of home.co.uk) to generate an API
       response, it also allows the API functionality to be tested on the home page as well as

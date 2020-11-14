@@ -26,7 +26,6 @@ function Navbar() {
       <a href="/">About</a>
       <a href="/#portfolio">Portfolio</a>
       <a href="/#contact">Contact</a>
-      <a href="/blog">Blog</a>
     </div>
   );
 

@@ -6,7 +6,7 @@ function Intro() {
     <div className="intro" id="about">
       <h1>Jamie Barrett</h1>
       <p>
-        Hello, I am a full stack developer with a strong background in Cyber
+        Hello, I am a full stack developer with six years' experience in Cyber
         Security. I enjoy developing all kinds of websites ranging from business
         landing pages, through to data rich functional web applications. I have
         development experience using HTML, CSS, JavaScript, MongoDB, Express,
