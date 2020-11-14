@@ -1,7 +1,7 @@
 .intro h1 {
-    font-family: 'Pacifico', cursive;
+    /* font-family: 'Pacifico', cursive; */
     font-size: 4.5rem;
-    color: var(--tertiary-color);;
+    color: var(--secondary-color);;
     margin: 0px;
 }
 

@@ -1,12 +1,12 @@
 /* https://coolors.co/fbfef9-191923-0e79b2-bf1363-f39237 */
 
 :root {
-    --primary-color: #191923;
+    --primary-color: #293241;
     --secondary-color: white;
-    --tertiary-color: #ffb703;
-    --quaternary-color: #BF1363;
+    --tertiary-color: #ee6c4d;
+    --quaternary-color: #ee6c4d;
     --primary-pad: 20px;
-    --main-font: 'Open Sans', sans-serif;
+    --main-font: 'Poppins', sans-serif;;
   }
 
 body {

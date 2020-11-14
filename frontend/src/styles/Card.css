@@ -1,11 +1,14 @@
 .card-item {
     margin: 10px;
-    padding: 20px 20px 40px 20px;
-    border-radius: 55px;
+    padding: 30px 30px 40px 30px;
     box-shadow: 5px 5px 8px #888888;
     background-color: var(--primary-color);
     color: var(--secondary-color);
     position: relative;
+}
+
+.card-item p {
+    text-align: justify;
 }
 
 .card-links {
@@ -16,5 +19,5 @@
 }
 
 .card-link-icon:hover {
-    fill: #BF1363;
+    fill: var(--tertiary-color);
 }
