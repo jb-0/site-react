@@ -1,9 +1,18 @@
 /* https://coolors.co/fbfef9-191923-0e79b2-bf1363-f39237 */
 
+:root {
+    --primary-color: #191923;
+    --secondary-color: white;
+    --tertiary-color: #ffb703;
+    --quaternary-color: #BF1363;
+    --primary-pad: 20px;
+    --main-font: 'Open Sans', sans-serif;
+  }
+
 body {
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #191923;
-    color: white;
+    font-family: var(--main-font);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     text-align: center;
 }

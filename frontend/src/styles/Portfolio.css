@@ -1,6 +1,6 @@
 .portfolio {
-    background-color: white;
-    color: #191923;
+    background-color: var(--secondary-color);;
+    color: var(--primary-color);;
     padding: 30px;
 }
 

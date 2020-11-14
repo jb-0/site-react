@@ -1,12 +1,12 @@
 .intro h1 {
     font-family: 'Pacifico', cursive;
     font-size: 4.5rem;
-    color: #F39237;
+    color: var(--tertiary-color);;
     margin: 0px;
 }
 
 .intro {
-    color: #FBFEF9;
+    color: var(--secondary-color);;
     padding: 90px 12.5%;
     font-size: 1.3rem;
   }
