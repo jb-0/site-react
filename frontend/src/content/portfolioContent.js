@@ -2,12 +2,22 @@ const portfolioContent = [
   {
     title: "Skill Search - Full Stack",
     content: `This site helps job seekers track skill demand in their area. The site includes Passport 
-    authentication via Google and Facebook allowing user's to save searches relevant to them. It was 
-    built using MongoDB, Express, React and Node.js. Backend tests created using Mocha and Chai, 
+    authentication for Google and Facebook allowing user's to save searches relevant to them. It was 
+    built using MongoDB, Express, React, Node.js and AWS Lambda. Backend tests created using Mocha and Chai, 
     with frontend tests created using Jest and React Testing Library.`,
     links: {
       site: "https://the-skills-tracker.herokuapp.com/",
       source: "https://github.com/jb-0/skill-search",
+    },
+  },
+  {
+    title: "AWS Region IP Finder - Front End",
+    content: `Built using React this site presents user's with a map and allows them to select an
+    AWS region, on selecting a region the user is presented with a comprehensive list of IPs for 
+    the chosen region. This site leverages AWS's publicly available IP JSON file.`,
+    links: {
+      site: "https://jb-0.github.io/aws-regions/",
+      source: "https://github.com/jb-0/aws-regions",
     },
   },
   {
@@ -32,7 +42,7 @@ const portfolioContent = [
     },
   },
   {
-    title: "Continuous Deployment - Cloud Function",
+    title: "GCP Continuous Deployment - Cloud Function",
     content: `To achieve continuous deployment for a static website hosted in a Google Cloud Storage
         Bucket, I developed a Cloud Function in Python. The Google Cloud Function is triggered via
         pushes to the GitHub repo (using a webhook).`,
