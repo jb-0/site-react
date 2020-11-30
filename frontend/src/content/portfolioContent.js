@@ -1,7 +1,7 @@
 const portfolioContent = [
   {
     title: "Skill Search - Full Stack",
-    content: `This site helps job seekers track skill demand in their area. The site includes Passport 
+    shortContent: `This site helps job seekers track skill demand in their area. The site includes Passport 
     authentication for Google and Facebook allowing user's to save searches relevant to them. It was 
     built using MongoDB, Express, React, Node.js and AWS Lambda. Backend tests created using Mocha and Chai, 
     with frontend tests created using Jest and React Testing Library.`,
@@ -12,7 +12,7 @@ const portfolioContent = [
   },
   {
     title: "AWS Region IP Finder - Front End",
-    content: `Built using React this site presents user's with a map and allows them to select an
+    shortContent: `Built using React this site presents user's with a map and allows them to select an
     AWS region, on selecting a region the user is presented with a comprehensive list of IPs for 
     the chosen region. This site leverages AWS's publicly available IP JSON file. Tests created 
     using Jest and React Testing Library.`,
@@ -23,7 +23,7 @@ const portfolioContent = [
   },
   {
     title: "UK Property API - Full Stack",
-    content: `This is a Node.js project that utilises web scraping (of home.co.uk) to generate an API
+    shortContent: `This is a Node.js project that utilises web scraping (of home.co.uk) to generate an API
       response, it also allows the API functionality to be tested on the home page as well as
       providing the user with an equivalent API call. Currently hosted on Heroku but previously
       containerised and hosted on GCP.`,
@@ -35,7 +35,7 @@ const portfolioContent = [
   },
   {
     title: "Twitter NLP - Data Science",
-    content: `Using NLP and unsupervised learning I was able to predict a number of key events
+    shortContent: `Using NLP and unsupervised learning I was able to predict a number of key events
       in a football match using tweets. This work was performed using Python, Jupyter, Anaconda and
       packages such as: pandas, matplotlib, sklearn, nltk and wordcloud.`,
     links: {
@@ -44,7 +44,7 @@ const portfolioContent = [
   },
   {
     title: "GCP Continuous Deployment - Cloud Function",
-    content: `To achieve continuous deployment for a static website hosted in a Google Cloud Storage
+    shortContent: `To achieve continuous deployment for a static website hosted in a Google Cloud Storage
         Bucket, I developed a Cloud Function in Python. The Google Cloud Function is triggered via
         pushes to the GitHub repo (using a webhook).`,
     links: {
