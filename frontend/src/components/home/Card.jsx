@@ -41,6 +41,7 @@ function Card(props) {
     }
   }
 
+  // When a card displays a read more button this function is used when the onClick event occurs
   function handleClick(event) {
     // If the card is already selected then collapse it, otherwise set it as the selected card
     if (parseInt(props.selectedCardId, 10) === props.id) {
@@ -51,21 +52,37 @@ function Card(props) {
   }
 
   return (
+    // If the read more button on this card has been pressed then the selectedCardId should 
+    // will match id, in this case apply different styling to take up full width
     <div
-      className={parseInt(props.selectedCardId, 10) === props.id ? 
-      'card-item selected-portfolio-item' : 'card-item'}
+      className={
+        parseInt(props.selectedCardId, 10) === props.id
+          ? 'card-item selected-portfolio-item'
+          : 'card-item'
+      }
     >
       <h3>{props.item.title}</h3>
-      <p>{props.item.content}</p>
-      <button
-        id={props.id}
-        onClick={handleClick}
-        className={
-          size.width > 440 ? 'read-more-button' : 'read-more-button-mobile'
-        }
-      >
-        Read More
-      </button>
+
+      {/* If the read more button has been pressed then show full content, otherwise use short */}
+      <p>
+        {parseInt(props.selectedCardId, 10) === props.id
+          ? props.item.content
+          : props.item.shortContent}
+      </p>
+
+      {/* The read more button should only be present where a portfolio item has a "content" entry */}
+      {props.item.content ? (
+        <button
+          id={props.id}
+          onClick={handleClick}
+          className={
+            size.width > 440 ? 'read-more-button' : 'read-more-button-mobile'
+          }
+        >
+          Read More
+        </button>
+      ) : null}
+
       <div className="card-links">
         {Object.keys(props.item.links).map((key, index) => {
           const link = props.item.links[key];
