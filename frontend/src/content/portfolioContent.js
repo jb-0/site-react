@@ -14,7 +14,8 @@ const portfolioContent = [
     title: "AWS Region IP Finder - Front End",
     content: `Built using React this site presents user's with a map and allows them to select an
     AWS region, on selecting a region the user is presented with a comprehensive list of IPs for 
-    the chosen region. This site leverages AWS's publicly available IP JSON file.`,
+    the chosen region. This site leverages AWS's publicly available IP JSON file. Tests created 
+    using Jest and React Testing Library.`,
     links: {
       site: "https://jb-0.github.io/aws-regions/",
       source: "https://github.com/jb-0/aws-regions",
