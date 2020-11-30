@@ -85,8 +85,7 @@ function ContactForm() {
         ></textarea>
         <br />
         <br />
-
-        <input type="submit" value="Submit" className="submit-button"></input>
+        <button type="submit" value="Submit" className="submit-button">Submit</button>
       </form>
     </div>
   );

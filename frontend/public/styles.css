@@ -1,18 +1,35 @@
 /* https://coolors.co/fbfef9-191923-0e79b2-bf1363-f39237 */
 
 :root {
-    --primary-color: #293241;
-    --secondary-color: white;
-    --tertiary-color: #ee6c4d;
-    --quaternary-color: #ee6c4d;
-    --primary-pad: 20px;
-    --main-font: 'Poppins', sans-serif;;
-  }
+  --primary-color: #293241;
+  --secondary-color: white;
+  --tertiary-color: #ee6c4d;
+  --quaternary-color: #ee6c4d;
+  --primary-pad: 20px;
+  --main-font: 'Poppins', sans-serif;
+}
 
 body {
-    margin: 0;
-    font-family: var(--main-font);
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    text-align: center;
+  margin: 0;
+  font-family: var(--main-font);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+button {
+  background-color: var(--primary-color);
+  font-family: 'Open Sans', sans-serif;
+  border-style: solid;
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  width: 100px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border-width: medium;
+  outline-width: 0;
+}
+
+button:hover {
+  background-color: var(--quaternary-color);;
 }
