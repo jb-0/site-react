@@ -42,10 +42,10 @@
 
 .portfolio-image {
     display: block;
-    margin: auto;
     width: 75%;
     border-style: solid;
     border-color: var(--secondary-color);
+    margin: 5px auto;
 }
 
 .selected-portfolio-item .content-div {
