@@ -39,3 +39,15 @@
 .selected-portfolio-item {
     grid-column: 1 / -1;
 }
+
+.portfolio-image {
+    display: block;
+    margin: auto;
+    width: 75%;
+    border-style: solid;
+    border-color: var(--secondary-color);
+}
+
+.selected-portfolio-item .content-div {
+    padding-bottom: 20px;
+}
