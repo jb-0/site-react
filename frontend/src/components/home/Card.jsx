@@ -79,7 +79,7 @@ function Card(props) {
           const linkName = key;
 
           return (
-            <span key={uuidv4} className="card-link">
+            <span key={uuidv4()} className="card-link">
               <a href={link}>{getIcon(linkName)}</a>{' '}
             </span>
           );
