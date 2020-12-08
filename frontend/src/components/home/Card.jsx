@@ -52,7 +52,7 @@ function Card(props) {
   }
 
   return (
-    // If the read more button on this card has been pressed then the selectedCardId should 
+    // If the read more button on this card has been pressed then the selectedCardId should
     // will match id, in this case apply different styling to take up full width
     <div
       className={
@@ -64,10 +64,13 @@ function Card(props) {
       <h3>{props.item.title}</h3>
 
       {/* If the read more button has been pressed then show full content, otherwise use short */}
-      {parseInt(props.selectedCardId, 10) === props.id
-        ? <div className="content-div"><p>{props.item.shortContent}</p> {props.item.content}</div>
-        : <p>{props.item.shortContent}</p>}
-      
+      {parseInt(props.selectedCardId, 10) === props.id ? (
+        <div className="content-div">
+          <p>{props.item.shortContent}</p> {props.item.content}
+        </div>
+      ) : (
+        <p>{props.item.shortContent}</p>
+      )}
 
       {/* The read more button should only be present where a portfolio item has a "content" entry */}
       {props.item.content ? (
@@ -78,7 +81,9 @@ function Card(props) {
             size.width > 440 ? 'read-more-button' : 'read-more-button-mobile'
           }
         >
-          See More
+          {parseInt(props.selectedCardId, 10) === props.id
+            ? 'Read Less'
+            : 'Read More'}
         </button>
       ) : null}
 
