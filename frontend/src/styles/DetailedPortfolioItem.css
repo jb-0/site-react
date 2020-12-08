@@ -1,0 +1,50 @@
+@keyframes dropFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.detailed-portfolio-item-container {
+  box-sizing: border-box;
+  position: fixed;
+  width: 90vw;
+  height: 90vh;
+  background-color: var(--secondary-color);
+  border: solid var(--tertiary-color);
+  top: 5vh;
+  left: 5vw;
+  z-index: 2;
+  margin: auto;
+  overflow: auto;
+  padding: 20px 20px;
+  animation: 1s ease-out 0s 1 dropFromTop;
+}
+
+.blurred-background-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(5px);
+}
+
+.portfolio-image {
+  display: block;
+  width: 75%;
+  border-style: solid;
+  border-color: var(--secondary-color);
+  margin: 5px auto;
+}
+
+#close-detailed-item-btn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+

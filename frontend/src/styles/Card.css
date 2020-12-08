@@ -34,20 +34,3 @@
     position: relative;
     margin: 10px;
 }
-
-
-.selected-portfolio-item {
-    grid-column: 1 / -1;
-}
-
-.portfolio-image {
-    display: block;
-    width: 75%;
-    border-style: solid;
-    border-color: var(--secondary-color);
-    margin: 5px auto;
-}
-
-.selected-portfolio-item .content-div {
-    padding-bottom: 20px;
-}

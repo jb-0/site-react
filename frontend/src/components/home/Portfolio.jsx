@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import Card from './Card';
+import DetailedPortfolioItem from './DetailedPortfolioItem';
 import portfolioContent from '../../content/portfolioContent';
 import '../../styles/Portfolio.css';
 import { ViewContext } from '../../context/ViewContext';
@@ -31,6 +32,13 @@ function Portfolio() {
           );
         })}
       </div>
+      {selectedCardId && (
+        <DetailedPortfolioItem
+          selectedCardId={selectedCardId}
+          setSelectedCardId={setSelectedCardId}
+          item={portfolioContent[selectedCardId]}
+        />
+      )}
     </div>
   );
 }
