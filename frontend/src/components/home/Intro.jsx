@@ -2,23 +2,24 @@ import React, { useRef } from 'react';
 import '../../styles/Intro.css';
 
 function Intro() {
-  const name = 'Jamie Barrett';
-  const nameSpans = name.split('').map((letter, index) => {
-    let classNames = 'name'
-    if (letter === ' ') classNames = `${classNames} space`
-
+  const firstName = 'Jamie';
+  const lastName = 'Barrett';
+  
+  const firstNameSpans = firstName.split('').map((letter, index) => {
     return (<><span
-      className={classNames}
-      style={{ 'animation-delay': `${index * 100}ms` }}
+      className="first-name"
+      style={{ 'animation-delay': `${index * 150}ms` }}
     >
       {letter}
     </span>{letter === ' ' ? <br></br> : null}</>
     )
   });
 
+  const fullName = <>{firstNameSpans}<br/><span className="last-name">{lastName}</span></>
+
   return (
     <div className="intro" id="about">
-      <h1>{nameSpans}</h1>
+      <h1>{fullName}</h1>
 
       <p>
         Hello, I am a full stack developer with six years' experience in Cyber
