@@ -22,7 +22,7 @@
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.14",
+    "mongoose": "^5.11.7",
     "nodemon": "^2.0.6",
     "rate-limiter-flexible": "^2.1.13",
     "sanitize-html": "^2.1.2"
