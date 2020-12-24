@@ -26,6 +26,15 @@ const portfolioContent = [
     },
   },
   {
+    title: 'Gatsby & Contentful Restaurant Site - Full Stack',
+    shortContent: `This site was built using Gatsby, React and serves up content stored in Contentful
+    CMS. This site includes a home page and menu that can be updated via Contentful.`,
+    links: {
+      site: 'https://build-7a2b7e7b-ced8-4afc-9751-5c889b3ac08b.gtsb.io/',
+      source: 'https://github.com/jb-0/restaurant'
+    }
+  },
+  {
     title: 'AWS Region IP Finder - Front End',
     shortContent: `Built using React this site presents user's with a map and allows them to select an
     AWS region, on selecting a region the user is presented with a comprehensive list of IPs for 
