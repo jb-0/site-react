@@ -30,7 +30,7 @@ const portfolioContent = [
     shortContent: `This site was built using Gatsby, React and serves up content stored in Contentful
     CMS. This site includes a home page and menu that can be updated via Contentful.`,
     links: {
-      site: 'restaurantmain.gtsb.io',
+      site: 'https://restaurantmain.gtsb.io',
       source: 'https://github.com/jb-0/restaurant'
     }
   },
