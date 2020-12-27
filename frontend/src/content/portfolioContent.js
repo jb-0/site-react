@@ -28,7 +28,9 @@ const portfolioContent = [
   {
     title: 'Gatsby & Contentful Restaurant Site - Full Stack',
     shortContent: `This site was built using Gatsby, React and serves up content stored in Contentful
-    CMS. This site includes a home page and menu that can be updated via Contentful.`,
+    CMS. This site includes a home page, menu and blog that can be updated via Contentful, including
+    defining HTML elements such as buttons. The site is responsive and can be used as the basis for 
+    creating a real world restaurant site.`,
     links: {
       site: 'https://restaurantmain.gtsb.io',
       source: 'https://github.com/jb-0/restaurant'
