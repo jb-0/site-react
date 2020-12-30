@@ -4,6 +4,7 @@ import { ViewContext } from '../../context/ViewContext';
 
 function ContactForm() {
   const size = useContext(ViewContext);
+  const [messageSentNotification, setMessageSentNotification] = useState(false);
   const [formText, setFormText] = useState({
     name: '',
     email: '',
@@ -12,7 +13,6 @@ function ContactForm() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(formText);
 
     const rawResponse = await fetch('/api/contact', {
       method: 'POST',
@@ -24,7 +24,10 @@ function ContactForm() {
       body: JSON.stringify(formText),
     });
 
-    const content = await rawResponse.json();
+    // Mark message sent notification as true, this hide the submit button. Set a timeout of 10
+    // seconds to mark the notification as false again incase a user wishes to submit another  
+    setMessageSentNotification(true);
+    setTimeout(() => setMessageSentNotification(false), 10000);
   }
 
   function handleUpdates(event) {
@@ -38,7 +41,9 @@ function ContactForm() {
 
   return (
     <div
-      className={size.width > 440 ? 'contact-form' : 'contact-form contact-form-mobile'}
+      className={
+        size.width > 440 ? 'contact-form' : 'contact-form contact-form-mobile'
+      }
       id="contact"
     >
       <h1>Contact Me</h1>
@@ -85,7 +90,13 @@ function ContactForm() {
         ></textarea>
         <br />
         <br />
-        <button type="submit" value="Submit" className="submit-button">Submit</button>
+        {messageSentNotification ? (
+          <p>Thanks! I'll be in touch soon.</p>
+        ) : (
+          <button type="submit" value="Submit" className="submit-button">
+            Submit
+          </button>
+        )}
       </form>
     </div>
   );
