@@ -9,33 +9,3 @@
   padding: 90px 12.5%;
   font-size: 1.3rem;
 }
-
-.first-name {
-  animation-name: firstNameAnimation;
-  animation-duration: 2s;
-  display: inline-block;
-}
-
-.last-name {
-  animation-name: lastNameAnimation;
-  animation-duration: 3s;
-  display: inline-block;
-}
-
-@keyframes firstNameAnimation {
-  0% {
-    transform: translateY(-200%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes lastNameAnimation {
-  0% {
-    transform: translateX(-200%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
