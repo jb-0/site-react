@@ -22,12 +22,9 @@ npm install
 
 ## Environment variables
 For assigning environment variables in dev I opted to use https://www.npmjs.com/package/dotenv,
-however you can use your preferred approach to assigning environment variables.
-- **DEV_DB_PATH** - The path to your development mongo instance, for example mongodb://127.0.0.1:27017/blogs
-- **JWT_TOKEN** - A secret used for JWT generation (https://www.npmjs.com/package/jsonwebtoken)
-
-I've opted to use https://mailtrap.io/ as a safe way of capturing contact form input. The following
-enviornment variables must be set for this to work.
+however you can use your preferred approach to assigning environment variables. I chose to use
+https://mailtrap.io/ as a safe way of capturing contact form input. The following enviornment 
+variables must be set for this to work.
 - **MAILTRAP_USER** - SMTP Mailtrap Username
 - **MAILTRAP_PASS** - SMTP Mailtrap Password
 - **MAILTRAP_TARGET** - The intended email address of the recipient of the mail
