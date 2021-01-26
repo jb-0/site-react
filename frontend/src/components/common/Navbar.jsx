@@ -1,21 +1,11 @@
-import React, { useContext, useState, useLayoutEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import '../../styles/Navbar.css';
-import {UserContext} from '../../context/UserContext';
 import { ViewContext } from '../../context/ViewContext';
 import MenuIcon from '@material-ui/icons/Menu';
 
 function Navbar() {
-  const { userData, setUserData } = useContext(UserContext);
   const [burgerItemsVisible, setBurgerItemsVisible] = useState(false);
   const size = useContext(ViewContext);
-
-  function handleLogout() {
-    setUserData({
-      token: undefined,
-      user: undefined,
-    });
-    localStorage.setItem('auth-token', '');
-  }
 
   function handleBurgerClick() {
     setBurgerItemsVisible(!burgerItemsVisible);
@@ -39,7 +29,6 @@ function Navbar() {
           {burgerItemsVisible ? navbarItems : null}
         </div>
       )}
-      {userData.user ? <button onClick={handleLogout}>Log out</button> : null}
     </div>
   );
 }
