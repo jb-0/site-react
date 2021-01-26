@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const enforce = require('express-sslify');
 const bodyParser = require('body-parser');
+const contactRoutes = require('./routes/contactRoutes.js');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -14,7 +15,7 @@ async function main() {
   if (process.env.PROD) app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-  app.use('/api/contact', require(`${__dirname}/routes/contactRoutes.js`));
+  app.use('/api/contact', contactRoutes);
 
   /* ***************************************
   FRONTEND LINKAGE
@@ -26,7 +27,7 @@ async function main() {
 
   app.listen(PORT, () => {
     console.log(`Server is running on Port: ${PORT}`);
-  }); 
+  });
 }
 
 main();
