@@ -1,12 +1,12 @@
 const contactRoutes = require('express').Router();
 const Email = require('email-templates');
-const frontendCheck = require(`${__dirname}/../middleware/frontendCheck.js`);
+const frontendCheck = require('../middleware/frontendCheck.js');
 
 contactRoutes.post('/', frontendCheck, (req, res) => {
   const email = new Email({
     message: {
       from: req.body.email,
-      subject: 'SITE: ' + req.body.name,
+      subject: `SITE: ${req.body.name}`,
       text: req.body.message,
     },
     send: true,
@@ -32,7 +32,6 @@ contactRoutes.post('/', frontendCheck, (req, res) => {
     })
     .then(res.send('mail sent'))
     .catch(console.error);
-  
 });
 
 module.exports = contactRoutes;
