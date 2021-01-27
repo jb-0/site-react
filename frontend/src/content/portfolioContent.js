@@ -15,7 +15,7 @@ const portfolioContent = [
           To implement authentication I used Passport.js for Google and Facebook 
           OAuth. I used AWS Lambda and CloudWatch to create a serverless daily job that 
           runs a count for all saved searches, this provides the necessary data to present back to 
-          users using Chart.js.
+          users using Chart.js. Styling for this site is achieved using React Styled Components.
         </p>
         <img className="portfolio-image" src={skillsTrackerImg} />
       </>
@@ -55,10 +55,10 @@ const portfolioContent = [
   },
   {
     title: 'UK Property API - Full Stack',
-    shortContent: `This is a Node.js project that utilises web scraping (of home.co.uk) to generate an API
-      response, it also allows the API functionality to be tested on the home page as well as
-      providing the user with an equivalent API call. Currently hosted on Heroku but previously
-      containerised and hosted on GCP.`,
+    shortContent: `This is a Node.js project that utilises puppeteer for web scraping and retrieves
+      data from home.co.uk, this data is then converted in to an API response. The frontend allows 
+      the  API functionality to be tested as well as providing the user with the corresponding API call. 
+      Currently hosted on Heroku but previously containerised and hosted on GCP.`,
     links: {
       site: 'https://uk-property-api.herokuapp.com/',
       demo: 'https://youtu.be/LlalqkidxSo',
