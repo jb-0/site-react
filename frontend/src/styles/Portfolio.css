@@ -1,15 +1,20 @@
 .portfolio {
-    background-color: var(--secondary-color);;
-    color: var(--primary-color);;
-    padding: 30px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 30px;
 }
 
 .portfolio-cards-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 1rem;
 }
 
 .portfolio-cards-section-mobile {
-   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  width: 100%;
+}
+
+.portfolio-mobile {
+  padding: 5px;
 }

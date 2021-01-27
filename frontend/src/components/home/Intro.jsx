@@ -1,9 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useContext } from 'react';
 import '../../styles/Intro.css';
+import { ViewContext } from '../../context/ViewContext';
 
 function Intro() {
+  const size = useContext(ViewContext);
+
   return (
-    <div className="intro" id="about">
+    <div className={
+      size.width > 440
+        ? 'intro'
+        : 'intro intro-mobile'
+    } id="about">
       <h1>Jamie Barrett</h1>
 
       <p>

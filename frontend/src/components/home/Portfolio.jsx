@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 function Portfolio() {
   const size = useContext(ViewContext);
   const [selectedCardId, setSelectedCardId] = useState();
-  
+
   // When a card is selected we want to prevent scroll on background
   if (selectedCardId) {
     document.body.style.height = '100vh';
@@ -20,8 +20,12 @@ function Portfolio() {
   }
 
   return (
-    <div className={`portfolio ${selectedCardId ? 'detailed-portfolio-open' : ''}`} 
-     id="portfolio">
+    <div
+      className={`${
+        size.width > 440 ? 'portfolio' : 'portfolio portfolio-mobile'
+      } ${selectedCardId ? 'detailed-portfolio-open' : ''}`}
+      id="portfolio"
+    >
       <h1>Portfolio</h1>
       <div
         className={
