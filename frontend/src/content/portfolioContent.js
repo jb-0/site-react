@@ -60,7 +60,6 @@ const portfolioContent = [
       the  API functionality to be tested as well as providing the user with the corresponding API call. 
       Currently hosted on Heroku but previously containerised and hosted on GCP.`,
     links: {
-      site: 'https://uk-property-api.herokuapp.com/',
       demo: 'https://youtu.be/LlalqkidxSo',
       source: 'https://github.com/jb-0/uk-property-api',
     },
