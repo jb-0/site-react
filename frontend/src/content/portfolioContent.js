@@ -12,10 +12,11 @@ const portfolioContent = [
     content: (
       <>
         <p>
-          To implement authentication I used Passport.js for Google and Facebook 
-          OAuth. I used AWS Lambda and CloudWatch to create a serverless daily job that 
-          runs a count for all saved searches, this provides the necessary data to present back to 
-          users using Chart.js. Styling for this site is achieved using React Styled Components.
+          To implement authentication I used Passport.js for Google and Facebook
+          OAuth. I used AWS Lambda and CloudWatch to create a serverless daily
+          job that runs a count for all saved searches, this provides the
+          necessary data to present back to users using Chart.js. Styling for
+          this site is achieved using React Styled Components.
         </p>
         <img className="portfolio-image" src={skillsTrackerImg} />
       </>
@@ -33,8 +34,20 @@ const portfolioContent = [
     creating a real world restaurant site.`,
     links: {
       site: 'https://restaurantmain.gtsb.io',
-      source: 'https://github.com/jb-0/restaurant'
-    }
+      source: 'https://github.com/jb-0/restaurant',
+    },
+  },
+  {
+    title: 'UK Property API - Full Stack',
+    shortContent: `This project was written in TypeScript and uses Node.js and Express on the backend, 
+    the frontend is React. Puppeteer is used for web scraping and retrieves data from home.co.uk, 
+    this data is then converted in to an API response. The frontend allows the  API functionality to 
+    be tested as well as providing the user with the corresponding API call.`,
+    links: {
+      site: 'http://uk-property-api.herokuapp.com/',
+      demo: 'https://youtu.be/LlalqkidxSo',
+      source: 'https://github.com/jb-0/uk-property-api',
+    },
   },
   {
     title: 'AWS Region IP Finder - Front End',
@@ -51,17 +64,6 @@ const portfolioContent = [
     links: {
       site: 'https://jb-0.github.io/aws-regions/',
       source: 'https://github.com/jb-0/aws-regions',
-    },
-  },
-  {
-    title: 'UK Property API - Full Stack',
-    shortContent: `This is a Node.js project that utilises puppeteer for web scraping and retrieves
-      data from home.co.uk, this data is then converted in to an API response. The frontend allows 
-      the  API functionality to be tested as well as providing the user with the corresponding API call. 
-      Currently hosted on Heroku but previously containerised and hosted on GCP.`,
-    links: {
-      demo: 'https://youtu.be/LlalqkidxSo',
-      source: 'https://github.com/jb-0/uk-property-api',
     },
   },
   {
