@@ -27,6 +27,17 @@ const portfolioContent = [
     },
   },
   {
+    title: 'UK Property API - Full Stack',
+    shortContent: `This project was written in TypeScript and uses Node.js and Express on the backend, 
+    the frontend is React. Puppeteer is used for web scraping and retrieves data from home.co.uk, 
+    this data is then converted in to an API response. The frontend allows the  API functionality to 
+    be tested as well as providing the user with the corresponding API call.`,
+    links: {
+      site: 'http://uk-property-api.herokuapp.com/',
+      source: 'https://github.com/jb-0/uk-property-api',
+    },
+  },
+  {
     title: 'Gatsby & Contentful Restaurant Site - Full Stack',
     shortContent: `This site was built using Gatsby, React and is generated using content stored in Contentful
     CMS. This site includes a home page, menu and blog that can be updated via Contentful, including
@@ -35,18 +46,6 @@ const portfolioContent = [
     links: {
       site: 'https://restaurantmain.gtsb.io',
       source: 'https://github.com/jb-0/restaurant',
-    },
-  },
-  {
-    title: 'UK Property API - Full Stack',
-    shortContent: `This project was written in TypeScript and uses Node.js and Express on the backend, 
-    the frontend is React. Puppeteer is used for web scraping and retrieves data from home.co.uk, 
-    this data is then converted in to an API response. The frontend allows the  API functionality to 
-    be tested as well as providing the user with the corresponding API call.`,
-    links: {
-      site: 'http://uk-property-api.herokuapp.com/',
-      demo: 'https://youtu.be/LlalqkidxSo',
-      source: 'https://github.com/jb-0/uk-property-api',
     },
   },
   {
